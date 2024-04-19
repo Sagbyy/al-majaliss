@@ -13,6 +13,7 @@
     "@iconify-json/material-symbols": "^1.1.78",
     "gsap": "^3.12.5",
     "nuxt": "^3.11.2",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "sharp": "^0.33.3",
     "swiper": "^11.1.1",
     "vue": "^3.4.21",
