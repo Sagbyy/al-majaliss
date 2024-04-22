@@ -146,7 +146,7 @@ onMounted(() => {
       class="relative flex h-auto w-full flex-col rounded-[50px] bg-beige-50 p-10 text-6xl md:p-[5%] lg:h-full lg:flex-row"
     >
       <div
-        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:justify-between lg:gap-0 lg:w-[60%]"
+        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:w-[60%] lg:justify-between lg:gap-0"
       >
         <div>
           <NuxtImg
@@ -170,7 +170,7 @@ onMounted(() => {
           </div>
           <div class="relative">
             <h1
-              class="home__item_left_effect my-7 font-dm-serif text-xl text-custom-orange-150 sm:text-2xl lg:text-4xl"
+              class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-orange-150 sm:text-2xl lg:text-4xl"
             >
               Majaliss, la plateforme de référence pour apprendre sa religion
             </h1>
@@ -190,7 +190,7 @@ onMounted(() => {
             />
           </div>
           <p
-            class="home__item_left_effect font-extra light pr-4 font-syne text-base text-red-brown sm:text-lg lg:text-xl"
+            class="home__item_left_effect font-normal pr-4 font-syne text-base text-red-brown sm:text-lg lg:text-xl"
           >
             Notre mission est de faciliter l'accès aux sciences religieuses en
             référençant tous les instituts de France dans un seul et même
@@ -222,16 +222,16 @@ onMounted(() => {
             </p>
           </div>
           <div
-            class="home__item_left_effect relative flex h-24 flex-col rounded-2xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne sm:h-20 sm:flex-row sm:px-6"
+            class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
           >
             <input
               type="text"
-              class="mb-2 h-full w-full rounded-l-2xl text-base focus:outline-none"
+              class="h-full w-full text-base focus:outline-none sm:mb-2 sm:rounded-l-2xl"
               placeholder="exemple@gmail.com"
             />
 
             <button
-              class="h-full w-full rounded-md bg-custom-orange-100 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:w-2/5 sm:rounded-xl"
+              class="hidden h-full w-2/5 rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:block"
             >
               Être alerté
             </button>
@@ -257,6 +257,11 @@ onMounted(() => {
               class="home__stars absolute -bottom-5 -right-12"
             />
           </div>
+          <button
+            class="h- relative z-20 block h-14 w-full rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:hidden"
+          >
+            Être alerté
+          </button>
         </div>
       </div>
       <div class="z-20 hidden w-[40%] justify-center lg:flex">
