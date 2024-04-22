@@ -4,7 +4,7 @@ import LandingMosqueeCard from '~/components/ui/LandingMosqueeCard.vue'
 import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
 
 // Imports Libraries
-import { SwiperSlide, Swiper } from 'swiper/vue'
+import { SwiperSlide, Swiper as SwiperElement } from 'swiper/vue'
 
 import gsap from 'gsap'
 
@@ -129,22 +129,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative h-screen max-h-screen overflow-hidden p-0 lg:p-20">
+  <div
+    class="relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen lg:overflow-y-hidden lg:p-20"
+  >
     <p
       class="home__first_arab_text absolute -top-16 left-12 z-10 font-samir text-[300px] text-beige-100"
     >
       مجالس
     </p>
     <p
-      class="home__second_arab_text absolute -bottom-5 right-5 z-10 font-samir text-[300px] text-beige-100"
+      class="home__second_arab_text absolute -bottom-36 right-5 z-10 overflow-hidden font-samir text-[300px] text-beige-100"
     >
       مجالس
     </p>
     <div
-      class="relative flex h-full w-full flex-col bg-beige-50 p-10 text-6xl md:h-full md:p-[5%] lg:rounded-[50px] 2xl:h-full 2xl:flex-row"
+      class="relative flex h-auto w-full flex-col rounded-[50px] bg-beige-50 p-10 text-6xl md:p-[5%] lg:h-full lg:flex-row"
     >
       <div
-        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:justify-between lg:gap-0 2xl:w-[60%]"
+        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:justify-between lg:gap-0 lg:w-[60%]"
       >
         <div>
           <NuxtImg
@@ -257,27 +259,51 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <Swiper
-        direction="vertical"
-        centered-slides
-        slides-per-view="auto"
-        space-between="30"
-        class="z-20 hidden w-[40%] justify-center 2xl:flex"
-        :speed="700"
-      >
-        <SwiperSlide
-          v-for="(mosquee, index) in mosquees"
-          :key="index"
-          v-slot="{ isActive }"
+      <div class="z-20 hidden w-[40%] justify-center lg:flex">
+        <SwiperElement
+          direction="vertical"
+          centered-slides
+          slides-per-view="auto"
+          space-between="30"
+          :speed="700"
         >
-          <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
-        </SwiperSlide>
-        <div
-          class="absolute -right-[30px] top-1/2 flex h-auto -translate-y-1/2 flex-col gap-8"
+          <SwiperSlide
+            v-for="(mosquee, index) in mosquees"
+            :key="index"
+            v-slot="{ isActive }"
+          >
+            <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
+          </SwiperSlide>
+          <div
+            class="absolute -right-[30px] top-1/2 flex h-auto -translate-y-1/2 flex-col gap-8"
+          >
+            <LandingSwiperNavButton />
+          </div>
+        </SwiperElement>
+      </div>
+      <div class="z-20 my-10 lg:hidden">
+        <SwiperElement
+          direction="horizontal"
+          centered-slides
+          slides-per-view="auto"
+          space-between="30"
+          :speed="700"
+          wrapper-class="flex"
         >
-          <LandingSwiperNavButton />
-        </div>
-      </Swiper>
+          <SwiperSlide
+            v-for="(mosquee, index) in mosquees"
+            :key="index"
+            v-slot="{ isActive }"
+          >
+            <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
+          </SwiperSlide>
+          <div
+            class="absolute -bottom-8 left-1/2 flex h-auto -translate-x-1/2 gap-8"
+          >
+            <LandingSwiperNavButton vertical />
+          </div>
+        </SwiperElement>
+      </div>
     </div>
   </div>
 </template>
