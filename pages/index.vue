@@ -150,7 +150,7 @@ onMounted(() => {
       >
         <div>
           <NuxtImg
-            src="/images/landing/moon.png"
+            src="/moon.png"
             alt="Lune"
             height="57"
             class="home__item_left_effect"
