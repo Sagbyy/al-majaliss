@@ -32,6 +32,9 @@ const tailwindConfig = {
         syne: ['Syne', 'sans-serif'],
         'dm-serif': ['DM Serif Text', 'serif'],
       },
+      dropShadow: {
+        'landing-card': '0 10px 40px 0 rgba(195, 195, 195, 0.25)',
+      },
     },
   },
 }

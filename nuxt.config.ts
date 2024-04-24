@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@nuxt/image'],
 
   // CSS
-  css: ['./assets/css/global.css'],
+  css: ['./assets/css/global.css', './assets/css/landing.css'],
 
   // Meta
   app: {

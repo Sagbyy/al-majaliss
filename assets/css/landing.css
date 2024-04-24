@@ -1,0 +1,4 @@
+/* Set the swiper slide to scale 0, for the GSAP animation */
+.swiper-slide {
+  transform: scale(0);
+}

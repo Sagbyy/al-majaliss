@@ -13,8 +13,8 @@ defineProps<{
 <template>
   <div
     :class="
-      'flex h-auto w-auto flex-col gap-5 rounded-[32px] bg-white p-8 font-syne text-sm shadow-md transition-transform duration-1000 ease-out' +
-      (isActive ? ' -rotate-2 ' : '') +
+      'flex drop-shadow-landing-card h-auto w-auto flex-col gap-5 rounded-[32px] bg-white p-8 font-syne text-sm shadow-md transition-transform duration-1000 ease-out' +
+      (isActive ? ' -rotate-2 hover:rotate-0' : '') +
       ' hover:-rotate-2'
     "
   >
@@ -43,15 +43,15 @@ defineProps<{
       </div>
     </div>
     <div
-      class="flex flex-row justify-between gap-5 text-center text-neutral-500"
+      class="flex flex-row justify-between gap-5 text-center text-neutral-500 px-6"
     >
       <div class="group cursor-pointer">
         <div
-          class="mb-2 rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
+          class="mx-auto mb-2 w-[50px] rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
         >
           <Icon
             name="material-symbols:call"
-            size="18px"
+            size="20px"
             class="text-custom-orange-150 transition-colors group-hover:text-beige-50"
           />
         </div>
@@ -59,11 +59,11 @@ defineProps<{
       </div>
       <div class="group cursor-pointer">
         <div
-          class="mb-2 rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
+          class="mx-auto mb-2 w-[50px] rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
         >
           <Icon
             name="tabler:click"
-            size="18px"
+            size="20px"
             class="text-custom-orange-150 transition-colors group-hover:text-beige-50"
           />
         </div>
@@ -71,19 +71,25 @@ defineProps<{
       </div>
       <div class="group cursor-pointer">
         <div
-          class="mb-2 rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
+          class="mx-auto mb-2 w-[50px] rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
         >
           <Icon
             name="bxl:instagram-alt"
-            size="18px"
+            size="20px"
             class="text-custom-orange-150 transition-colors group-hover:text-beige-50"
           />
         </div>
         <p>Instagram</p>
       </div>
       <div class="group cursor-pointer">
-        <div class="mb-2 rounded-full bg-beige-50 p-4">
-          <Icon name="simple-icons:telegram" color="#934220" size="18px" />
+        <div
+          class="mx-auto mb-2 w-[50px] rounded-full bg-beige-50 p-4 transition-colors group-hover:bg-custom-orange-150"
+        >
+          <Icon
+            name="simple-icons:telegram"
+            size="20px"
+            class="text-custom-orange-150 transition-colors group-hover:text-beige-50"
+          />
         </div>
         <p>Telegram</p>
       </div>

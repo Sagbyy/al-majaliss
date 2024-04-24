@@ -133,12 +133,12 @@ onMounted(() => {
     class="relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen lg:overflow-y-hidden lg:p-20"
   >
     <p
-      class="home__first_arab_text absolute -top-16 left-12 z-10 font-samir text-[300px] text-beige-100"
+      class="home__first_arab_text -translate-x-[200%] absolute -top-16 left-12 z-10 font-samir text-[300px] text-beige-100"
     >
       مجالس
     </p>
     <p
-      class="home__second_arab_text absolute -bottom-36 right-5 z-10 overflow-hidden font-samir text-[300px] text-beige-100"
+      class="home__second_arab_text translate-x-[200%] absolute -bottom-36 right-5 z-10 overflow-hidden font-samir text-[300px] text-beige-100"
     >
       مجالس
     </p>
@@ -153,11 +153,11 @@ onMounted(() => {
             src="/moon.png"
             alt="Lune"
             height="57"
-            class="home__item_left_effect"
+            class="home__item_left_effect opacity-0"
           />
           <div class="relative inline-block">
             <p
-              class="home__item_left_effect inline-block rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-custom-orange-150"
+              class="home__item_left_effect opacity-0 inline-block rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-custom-orange-150"
             >
               Coming soon
             </p>
@@ -165,12 +165,12 @@ onMounted(() => {
               src="/images/landing/star.svg"
               alt="Etoile"
               height="40"
-              class="home__stars absolute -right-14 top-9"
+              class="home__stars scale-0 absolute -right-14 top-9"
             />
           </div>
           <div class="relative">
             <h1
-              class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-orange-150 sm:text-2xl lg:text-4xl"
+              class="home__item_left_effect opacity-0 my-7 font-dm-serif text-3xl text-custom-orange-150 sm:text-2xl lg:text-4xl"
             >
               Majaliss, la plateforme de référence pour apprendre sa religion
             </h1>
@@ -179,18 +179,18 @@ onMounted(() => {
               alt="Etoile"
               height="28"
               width="28"
-              class="home__stars absolute -top-8 right-28 hidden lg:block"
+              class="home__stars scale-0 absolute -top-8 right-28 hidden lg:block"
             />
             <NuxtImg
               src="/images/landing/star.svg"
               alt="Etoile"
               height="14"
               width="14"
-              class="home__stars absolute -top-6 right-[85px]"
+              class="home__stars scale-0 absolute -top-6 right-[85px]"
             />
           </div>
           <p
-            class="home__item_left_effect font-normal pr-4 font-syne text-base text-red-brown sm:text-lg lg:text-xl"
+            class="home__item_left_effect opacity-0 pr-4 font-syne text-base font-normal text-red-brown sm:text-lg lg:text-xl"
           >
             Notre mission est de faciliter l'accès aux sciences religieuses en
             référençant tous les instituts de France dans un seul et même
@@ -202,7 +202,7 @@ onMounted(() => {
         <div class="lg:pr-16">
           <div>
             <p
-              class="home__item_left_effect relative mb-5 inline-block font-syne text-base font-semibold text-custom-orange-150 sm:text-lg lg:text-xl"
+              class="home__item_left_effect opacity-0 relative mb-5 inline-block font-syne text-base font-semibold text-custom-orange-150 sm:text-lg lg:text-xl"
             >
               Pss ! Ne rate surtout pas la sortie du site
               <NuxtImg
@@ -210,19 +210,19 @@ onMounted(() => {
                 alt="Etoile"
                 height="24"
                 width="24"
-                class="home__stars absolute -right-6 -top-7"
+                class="home__stars scale-0 absolute -right-6 -top-7"
               />
               <NuxtImg
                 src="/images/landing/star.svg"
                 alt="Etoile"
                 height="14"
                 width="14"
-                class="home__stars absolute -left-8 top-0"
+                class="home__stars scale-0 absolute -left-8 top-0"
               />
             </p>
           </div>
           <div
-            class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
+            class="home__item_left_effect opacity-0 relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
           >
             <input
               type="text"
@@ -240,21 +240,21 @@ onMounted(() => {
               alt="Etoile"
               height="30"
               width="30"
-              class="home__stars absolute -bottom-8 -left-10 hidden lg:block"
+              class="home__stars scale-0 absolute -bottom-8 -left-10 hidden lg:block"
             />
             <NuxtImg
               src="/images/landing/star.svg"
               alt="Etoile"
               height="22"
               width="22"
-              class="home__stars absolute -bottom-9 left-[17%]"
+              class="home__stars scale-0 absolute -bottom-9 left-[17%]"
             />
             <NuxtImg
               src="/images/landing/star.svg"
               alt="Etoile"
               height="10"
               width="10"
-              class="home__stars absolute -bottom-5 -right-12"
+              class="home__stars scale-0 absolute -bottom-5 -right-12"
             />
           </div>
           <button
@@ -280,7 +280,7 @@ onMounted(() => {
             <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
           </SwiperSlide>
           <div
-            class="absolute -right-[30px] top-1/2 flex h-auto -translate-y-1/2 flex-col gap-8"
+            class="absolute -right-[30px] top-1/2 flex h-auto -translate-y-1/2 flex-col gap-3"
           >
             <LandingSwiperNavButton />
           </div>
@@ -303,7 +303,7 @@ onMounted(() => {
             <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
           </SwiperSlide>
           <div
-            class="absolute -bottom-8 left-1/2 flex h-auto -translate-x-1/2 gap-8"
+            class="absolute -bottom-8 left-1/2 flex h-auto -translate-x-1/2 gap-3"
           >
             <LandingSwiperNavButton vertical />
           </div>
