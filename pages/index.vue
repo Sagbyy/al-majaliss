@@ -5,64 +5,93 @@ import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
 
 // Imports Libraries
 import { SwiperSlide, Swiper as SwiperElement } from 'swiper/vue'
-
 import gsap from 'gsap'
 
 // Data
 const mosquees = [
   {
-    name: 'Mosquée de Paris',
-    address: "2 bis Place du Puits de l'Ermite, 75005 Paris",
-    image: '/images/landing/image_example_mosquee.png',
+    name: 'Institus Ilm',
+    address: "Paris, Île-de-France",
+    image: '/images/landing/schools/school_1.jpg',
     description:
-      'La Grande Mosquée de Paris est un édifice religieux et culturel musulman situé dans le 5ᵉ arrondissement de Paris, en France. Inaugurée le 15 juillet 1926, elle est la première mosquée construite en France métropolitaine.',
-    website: 'https://www.mosquee-de-paris.org/',
-    free: true,
+      'L\'institution Ilm est une école qui propose des cours de religion, de Coran et d\'arabe. L\'école est située à Paris, en France.',
+    website: '',
+    type: "Cours payants",
+    courses: {
+      islamic: true,
+      quran: true,
+      arabic: true,
+    }
   },
   {
-    name: 'Mosquée de Lyon',
-    address: '146 Boulevard Pinel, 69500 Bron',
-    image: '/images/landing/image_example_mosquee.png',
+    name: 'L\'arabe facile',
+    address: 'Lyon, Auvergne-Rhône-Alpes',
+    image: '/images/landing/schools/school_2.jpg',
     description:
-      'La Grande Mosquée de Lyon est un édifice religieux musulman situé à Lyon, en France. Inaugurée en 1994, elle est la plus grande mosquée de France.',
-    website: 'https://www.mosquee-lyon.org/',
-    free: true,
+      'L\'Arabe Facile est une école qui est réputée pour son enseignement de la langue arabe. L\'école est située à Lyon, en France.',
+    website: '',
+    type: "Cours payants",
+    courses: {
+      islamic: false,
+      quran: true,
+      arabic: true,
+    }
   },
   {
-    name: 'Mosquée de Marseille',
-    address: '81 Boulevard National, 13003 Marseille',
-    image: '/images/landing/image_example_mosquee.png',
+    name: 'Ecole Al-Mihrab',
+    address: 'Nantes, Pays de la Loire',
+    image: '/images/landing/schools/school_3.jpg',
     description:
-      'La Grande Mosquée de Marseille est un édifice religieux musulman situé à Marseille, en France. Inaugurée en 2010, elle est la plus grande mosquée de Marseille.',
-    website: 'https://www.mosquee-marseille.com/',
-    free: true,
+      'L\'école Al-Mihrab est une école qui a pu accueillir des milliers d\'élèves depuis sa création. Elle a été inaugurée en 2005 et est située à Nantes, en France.',
+    website: '',
+    type: "Hybride",
+    courses: {
+      islamic: true,
+      quran: false,
+      arabic: true,
+    }
   },
   {
-    name: 'Mosquée de Strasbourg',
-    address: '6 Rue Averroès, 67200 Strasbourg',
-    image: '/images/landing/image_example_mosquee.png',
+    name: 'Institut Musulman',
+    address: 'Marseille, Provence-Alpes-Côte d\'Azur',
+    image: '/images/landing/schools/school_4.jpg',
     description:
-      'La Grande Mosquée de Strasbourg est un édifice religieux musulman situé à Strasbourg, en France. Inaugurée en 2012, elle est la plus grande mosquée de Strasbourg.',
-    website: 'https://www.mosquee-strasbourg.com/',
-    free: true,
+      'L\'Institut Musulman est une institut qui propose des cours de religion et de Coran. L\'institut à permis à des milliers de personnes d\'apprendre leur religion et de se rapprocher d\'Allah.',
+    website: '',
+    type: "En ligne",
+    courses: {
+      islamic: true,
+      quran: true,
+      arabic: false,
+    }
   },
   {
-    name: 'Mosquée de Bordeaux',
-    address: '28 Rue de Tresses, 33800 Bordeaux',
-    image: '/images/landing/image_example_mosquee.png',
+    name: 'Madrasa Saleh',
+    address: 'Gagny, Île-de-France',
+    image: '/images/landing/schools/school_5.png',
     description:
-      'La Grande Mosquée de Bordeaux est un édifice religieux musulman situé à Bordeaux, en France. Inaugurée en 2018, elle est la plus grande mosquée de Bordeaux.',
-    website: 'https://www.mosquee-bordeaux.com/',
-    free: true,
+      'Madrasa Saleh de Gagny est une madrasa situé à Gagny, en France. Elle est la plus grande madrasa de Gagny, et accueille des élèves de tout âge',
+    website: '',
+    type: "Présentiel",
+    courses: {
+      islamic: true,
+      quran: false,
+      arabic: false,
+    }
   },
   {
-    name: 'Mosquée de Lille',
-    address: '11 Rue du Faubourg des Postes, 59000 Lille',
-    image: '/images/landing/image_example_mosquee.png',
+    name: 'Quran Academy',
+    address: 'Grenoble, Auvergne-Rhône-Alpes',
+    image: '/images/landing/schools/school_1.jpg',
     description:
-      'La Grande Mosquée de Lille est un édifice religieux musulman situé à Lille, en France. Inaugurée en 2000, elle est la plus grande mosquée de Lille.',
-    website: 'https://www.mosquee-lille.com/',
-    free: true,
+      'Quran Academy est un édifice religieux musulman situé à Grenoble, en France. Inaugurée en 2000, elle est la plus école coranique de Grenoble.',
+    website: '',
+    type: "Cours gratuits",
+    courses: {
+      islamic: true,
+      quran: true,
+      arabic: false,
+    }
   },
 ]
 
@@ -222,7 +251,8 @@ onMounted(() => {
             </p>
           </div>
           <div
-            class="home__item_left_effect opacity-0 relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
+            class="home__item_left_effect opacity-0 relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3
+             font-syne sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
           >
             <input
               type="text"
@@ -231,7 +261,7 @@ onMounted(() => {
             />
 
             <button
-              class="hidden h-full w-2/5 rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:block"
+              class="hidden h-full w-2/5 rounded-xl py-4 bg-custom-orange-100 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:block"
             >
               Être alerté
             </button>

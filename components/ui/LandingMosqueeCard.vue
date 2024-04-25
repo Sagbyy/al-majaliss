@@ -5,7 +5,12 @@ defineProps<{
   image: string
   description: string
   website: string
-  free: boolean
+  courses: {
+    islamic: boolean
+    quran: boolean
+    arabic: boolean
+  }
+  type: string
   isActive: boolean
 }>()
 </script>
@@ -25,7 +30,7 @@ defineProps<{
         class="h-12 w-12 rounded-full lg:h-[70px] lg:w-[70px]"
       />
       <div class="flex w-full flex-col lg:gap-2">
-        <div class="flex flex-row items-center justify-between">
+        <div class="flex flex-row items-center justify-between gap-3">
           <p
             class="font-dm-serif text-[14px] text-custom-orange-150 lg:text-[20px]"
           >
@@ -34,7 +39,7 @@ defineProps<{
           <p
             class="text-nowrap rounded-xl border-[1px] p-1 px-3 text-[10px] lg:p-2 lg:text-sm"
           >
-            Cours gratuit
+            {{ type }}
           </p>
         </div>
         <p class="font-syne text-[10px] text-neutral-500 lg:text-sm">
@@ -95,19 +100,21 @@ defineProps<{
       </div>
     </div>
     <div class="flex flex-col gap-3">
-      <div
+      <div v-if="courses.islamic"
         class="flex flex-row justify-center gap-5 rounded-xl border-[1px] p-3 text-sm"
       >
         <NuxtImg src="/images/landing/sciences_islamiques.svg" alt="Avatar" />
         <p>Science islamique</p>
       </div>
       <div
+      v-if="courses.quran"
         class="flex flex-row justify-center gap-5 rounded-xl border-[1px] p-3 text-sm"
       >
         <NuxtImg src="/images/landing/sciences_du_coran.svg" alt="Coran" />
         <p>Science du Coran</p>
       </div>
       <div
+      v-if="courses.arabic"
         class="flex flex-row justify-center gap-5 rounded-xl border-[1px] p-3 text-sm"
       >
         <NuxtImg src="/images/landing/langue_arabe.svg" alt="Lettre shine" />
