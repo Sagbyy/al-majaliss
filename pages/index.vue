@@ -273,12 +273,13 @@ onMounted(() => {
             />
           </div>
           <button
-            class="h- relative z-20 block h-14 w-full rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:hidden"
+            class="home__item_left_effect relative z-20 block h-14 w-full rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-custom-orange-150 sm:hidden"
           >
             Être alerté
           </button>
         </div>
       </div>
+
       <!-- Desktop Swiper -->
       <div class="z-20 hidden w-[40%] justify-center lg:flex">
         <Swiper
