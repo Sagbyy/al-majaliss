@@ -37,7 +37,7 @@ defineProps<{
             {{ name }}
           </p>
           <p
-            class="text-nowrap rounded-xl border-[1px] p-1 px-3 text-[10px] lg:p-2 lg:text-sm"
+            class="text-nowrap rounded-xl border-[1px] p-1 px-2 text-[8.5px] lg:p-2 lg:text-sm"
           >
             {{ type }}
           </p>
