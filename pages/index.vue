@@ -4,7 +4,7 @@ import LandingMosqueeCard from '~/components/ui/LandingMosqueeCard.vue'
 import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
 
 // Imports Libraries
-import { SwiperSlide, Swiper as SwiperElement } from 'swiper/vue'
+import { SwiperSlide, Swiper } from 'swiper/vue'
 import gsap from 'gsap'
 
 // Data
@@ -279,8 +279,9 @@ onMounted(() => {
           </button>
         </div>
       </div>
+      <!-- Desktop Swiper -->
       <div class="z-20 hidden w-[40%] justify-center lg:flex">
-        <SwiperElement
+        <Swiper
           direction="vertical"
           centered-slides
           slides-per-view="auto"
@@ -299,16 +300,18 @@ onMounted(() => {
           >
             <LandingSwiperNavButton />
           </div>
-        </SwiperElement>
+        </Swiper>
       </div>
+
+      <!-- Mobile Swiper -->
       <div class="z-20 my-10 lg:hidden">
-        <SwiperElement
+        <Swiper
           direction="horizontal"
           centered-slides
           slides-per-view="auto"
           space-between="30"
           :speed="700"
-          wrapper-class="flex"
+          wrapper-class="flex items-center"
         >
           <SwiperSlide
             v-for="(mosquee, index) in mosquees"
@@ -322,7 +325,7 @@ onMounted(() => {
           >
             <LandingSwiperNavButton vertical />
           </div>
-        </SwiperElement>
+        </Swiper>
       </div>
     </div>
   </div>
