@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Majaliss - Trouvez une mosquée près de chez vous',
-  description: 'Trouvez une mosquée près de chez vous',
+  title: 'Majaliss - Trouvez une institut près de chez vous',
+  description: 'Trouvez une institut près de chez vous',
 })
 </script>
