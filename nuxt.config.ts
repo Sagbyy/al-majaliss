@@ -18,14 +18,15 @@ export default defineNuxtConfig({
   // Meta
   app: {
     head: {
-      title: 'Al Majaliss - Trouvez une institut près de chez vous',
+      title: 'Majaliss - Trouvez un institut près de chez vous',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',
-          content: 'Trouvez une institut près de chez vous',
+          content:
+            "Notre mission est de faciliter l'accès aux sciences religieuses en référençant tous les instituts de France dans un seul et même endroit afin que tu puisses les comparer entre eux et choisir celui qui te correspond vraiment !",
         },
       ],
       link: [{ rel: 'icon', type: 'image/png', href: '/moon.png' }],
