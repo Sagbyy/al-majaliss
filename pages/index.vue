@@ -6,8 +6,14 @@ import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
 // Imports Libraries
 import { SwiperSlide, Swiper } from 'swiper/vue'
 import gsap from 'gsap'
+import JSConfetti from 'js-confetti'
 
 // Data
+const config = useRuntimeConfig()
+const toast = useToast()
+const jsConfetti = ref<JSConfetti>()
+
+const emailInputValue = ref('')
 const mosquees = [
   {
     name: 'Institut Ilm',
@@ -83,6 +89,9 @@ const mosquees = [
 
 // Hooks cycle
 onMounted(() => {
+  // JSConfetti
+  jsConfetti.value = new JSConfetti()
+
   // GSAP
   const TL = gsap.timeline({ delay: 0.5 })
 
@@ -141,6 +150,76 @@ onMounted(() => {
       '<+=0.5'
     )
 })
+
+// Methods
+const addContactToList = (email: string) => {
+  let errorDescription =
+    "Une erreur est survenue lors de l'ajout à la liste de contact"
+
+  const options = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      'api-key': config.public.brevoApiKey,
+    },
+    body: JSON.stringify({
+      email: emailInputValue.value,
+      emailBlacklisted: false,
+      smsBlacklisted: false,
+      listIds: [3],
+      updateEnabled: false,
+    }),
+  }
+
+  fetch('https://api.brevo.com/v3/contacts', options)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.code) {
+        switch (response.code) {
+          case 'duplicate_parameter':
+            errorDescription = 'Vous êtes déjà inscrit à la liste de contact'
+            break
+
+          case 'invalid_parameter':
+            errorDescription = "L'adresse email est invalide"
+            break
+
+          default:
+            break
+        }
+
+        toast.add({
+          title: 'Erreur',
+          description: errorDescription,
+          icon: 'i-heroicons-x-circle',
+          color: 'red',
+          timeout: 5000,
+        })
+      } else {
+        jsConfetti.value?.addConfetti()
+        toast.add({
+          title: 'Succès',
+          description: 'Vous avez bien été ajouté à la liste de contact',
+          icon: 'i-heroicons-check-badge',
+          color: 'primary',
+          timeout: 5000,
+        })
+      }
+    })
+    .catch(() => {
+      toast.add({
+        title: 'Erreur',
+        description: errorDescription,
+        icon: 'i-heroicons-x-circle',
+        color: 'red',
+        timeout: 5000,
+      })
+    })
+
+  // Reset input value
+  emailInputValue.value = ''
+}
 </script>
 
 <template>
@@ -240,13 +319,15 @@ onMounted(() => {
             class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne opacity-0 sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
           >
             <input
-              type="text"
+              type="email"
               class="h-full w-full text-base focus:outline-none sm:mb-2 sm:rounded-l-2xl"
               placeholder="exemple@gmail.com"
+              v-model="emailInputValue"
             />
 
             <button
               class="hidden h-full w-2/5 rounded-xl bg-custom-orange-100 py-4 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:block"
+              @click="addContactToList"
             >
               Être alerté
             </button>
@@ -274,6 +355,7 @@ onMounted(() => {
           </div>
           <button
             class="home__item_left_effect relative z-20 block h-14 w-full rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-custom-orange-150 sm:hidden"
+            @click="addContactToList"
           >
             Être alerté
           </button>

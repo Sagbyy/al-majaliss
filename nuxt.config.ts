@@ -1,8 +1,14 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   // Modules
   modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@nuxt/image'],
+
+  // Envrioment Variables
+  runtimeConfig: {
+    public: {
+      brevoApiKey: process.env.BREVO_API_KEY,
+    },
+  },
 
   // CSS
   css: ['./assets/css/global.css', './assets/css/landing.css'],
