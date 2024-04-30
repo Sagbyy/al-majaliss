@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   // Modules
@@ -6,7 +8,7 @@ export default defineNuxtConfig({
   // Envrioment Variables
   runtimeConfig: {
     public: {
-      brevoApiKey: process.env.NUXT_PUBLIC_BREVO_API_KEY,
+      brevoApiKey: process.env.NUXT_ENV_BREVO_API_KEY,
     },
   },
 
