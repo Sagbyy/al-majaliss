@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   // Envrioment Variables
   runtimeConfig: {
     public: {
-      brevoApiKey: process.env.BREVO_API_KEY,
+      brevoApiKey: process.env.NUXT_ENV_BREVO_API_KEY,
     },
   },
 
