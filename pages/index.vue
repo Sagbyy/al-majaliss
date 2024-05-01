@@ -6,12 +6,11 @@ import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
 // Imports Libraries
 import { SwiperSlide, Swiper } from 'swiper/vue'
 import gsap from 'gsap'
-import JSConfetti from 'js-confetti'
 
 // Data
 const config = useRuntimeConfig()
 const toast = useToast()
-const jsConfetti = ref<JSConfetti>()
+const subscribeModal = ref(false)
 
 const emailInputValue = ref('')
 const mosquees = [
@@ -89,9 +88,6 @@ const mosquees = [
 
 // Hooks cycle
 onMounted(() => {
-  // JSConfetti
-  jsConfetti.value = new JSConfetti()
-
   // GSAP
   const TL = gsap.timeline({ delay: 0.5 })
 
@@ -152,7 +148,7 @@ onMounted(() => {
 })
 
 // Methods
-const addContactToList = (email: string) => {
+const addContactToList = () => {
   let errorDescription =
     "Une erreur est survenue lors de l'ajout à la liste de contact"
 
@@ -197,7 +193,8 @@ const addContactToList = (email: string) => {
           timeout: 5000,
         })
       } else {
-        jsConfetti.value?.addConfetti()
+        subscribeModal.value = true
+
         toast.add({
           title: 'Succès',
           description: 'Vous avez bien été ajouté à la liste de contact',
@@ -223,6 +220,52 @@ const addContactToList = (email: string) => {
 </script>
 
 <template>
+  <!-- Modal -->
+  <UModal
+    v-model="subscribeModal"
+    prevent-close
+    :ui="{
+      overlay: {
+        background: 'bg-black/25',
+      },
+    }"
+  >
+    <UCard
+      :ui="{
+        ring: '',
+        divide: 'divide-y divide-gray-100 dark:divide-gray-800',
+      }"
+    >
+      <template #header>
+        <div class="flex items-center justify-between">
+          <h3 class="font-syne text-base font-semibold leading-6">
+            Inscription confirmée
+          </h3>
+          <UButton
+            color="gray"
+            variant="ghost"
+            icon="i-heroicons-x-mark-20-solid"
+            class="-my-1"
+            @click="subscribeModal = false"
+          />
+        </div>
+      </template>
+
+      <p class="font-syne">
+        Félicitation, vous êtes désormais inscrit à notre liste de contact !
+        Rejoignez le discord pour être informé des dernières nouveautés.
+      </p>
+      <a
+        class="bg-discord hover:bg-dark-discord mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md py-3 text-center font-medium text-white transition-colors"
+        href="https://discord.gg/"
+        target="_blank"
+      >
+        <Icon name="ic:baseline-discord" color="white" size="20" />
+        <p>Rejoindre le discord</p>
+      </a>
+    </UCard>
+  </UModal>
+
   <div
     class="relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen lg:overflow-y-hidden lg:p-20"
   >
@@ -244,14 +287,14 @@ const addContactToList = (email: string) => {
       >
         <div>
           <NuxtImg
-            src="/moon.png"
-            alt="Lune"
+            src="/majaliss_logo.svg"
+            alt="Logo Majaliss"
             height="57"
-            class="home__item_left_effect opacity-0"
+            class="home__item_left_effect h-20 opacity-0"
           />
           <div class="relative inline-block">
             <p
-              class="home__item_left_effect inline-block rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-custom-orange-150 opacity-0"
+              class="home__item_left_effect inline-block rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-black opacity-0"
             >
               Coming soon
             </p>
@@ -264,7 +307,7 @@ const addContactToList = (email: string) => {
           </div>
           <div class="relative">
             <h1
-              class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-orange-150 opacity-0 sm:text-2xl lg:text-4xl"
+              class="home__item_left_effect text-custom-blue my-7 font-dm-serif text-3xl opacity-0 sm:text-2xl lg:text-4xl"
             >
               Majaliss, la plateforme de référence pour apprendre sa religion
             </h1>
@@ -296,7 +339,7 @@ const addContactToList = (email: string) => {
         <div class="lg:pr-16">
           <div>
             <p
-              class="home__item_left_effect relative mb-5 inline-block font-syne text-base font-semibold text-custom-orange-150 opacity-0 sm:text-lg lg:text-xl"
+              class="home__item_left_effect text-gold relative mb-5 inline-block font-syne text-base font-semibold opacity-0 sm:text-lg lg:text-xl"
             >
               Pss ! Ne rate surtout pas la sortie du site
               <NuxtImg
@@ -326,7 +369,7 @@ const addContactToList = (email: string) => {
             />
 
             <button
-              class="hidden h-full w-2/5 rounded-xl bg-custom-orange-100 py-4 text-center font-syne text-base text-white transition-colors hover:bg-custom-orange-150 sm:block"
+              class="bg-gold hidden h-full w-2/5 rounded-xl py-4 text-center font-syne text-base text-white transition-colors hover:bg-yellow-700 sm:block"
               @click="addContactToList"
             >
               Être alerté
@@ -354,7 +397,7 @@ const addContactToList = (email: string) => {
             />
           </div>
           <button
-            class="home__item_left_effect relative z-20 block h-14 w-full rounded-xl bg-custom-orange-100 text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-custom-orange-150 sm:hidden"
+            class="home__item_left_effect bg-gold relative z-20 block h-14 w-full rounded-xl text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-yellow-700 sm:hidden"
             @click="addContactToList"
           >
             Être alerté

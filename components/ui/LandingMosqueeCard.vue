@@ -31,9 +31,7 @@ defineProps<{
       />
       <div class="flex w-full flex-col lg:gap-2">
         <div class="flex flex-row items-center justify-between gap-2">
-          <p
-            class="font-dm-serif text-[14px] text-custom-orange-150 lg:text-[20px]"
-          >
+          <p class="text-custom-blue font-dm-serif text-[14px] lg:text-[20px]">
             {{ name }}
           </p>
           <p
@@ -52,48 +50,48 @@ defineProps<{
     >
       <div class="group w-1/4 cursor-pointer">
         <div
-          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-custom-orange-150 lg:h-[50px] lg:w-[50px]"
+          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="material-symbols:call"
             size="20px"
-            class="w-3 text-custom-orange-150 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Appeler</p>
       </div>
       <div class="group w-1/4 cursor-pointer">
         <div
-          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-custom-orange-150 lg:h-[50px] lg:w-[50px]"
+          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="tabler:click"
             size="20px"
-            class="w-3 text-custom-orange-150 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Site web</p>
       </div>
       <div class="group w-1/4 cursor-pointer">
         <div
-          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-custom-orange-150 lg:h-[50px] lg:w-[50px]"
+          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="bxl:instagram-alt"
             size="20px"
-            class="w-3 text-custom-orange-150 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Instagram</p>
       </div>
       <div class="group w-1/4 cursor-pointer">
         <div
-          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-custom-orange-150 lg:h-[50px] lg:w-[50px]"
+          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="simple-icons:telegram"
             size="20px"
-            class="w-3 text-custom-orange-150 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Telegram</p>
@@ -127,7 +125,7 @@ defineProps<{
         class="flex flex-row items-center justify-center gap-5 rounded-xl border-[1px] p-3 text-xs lg:text-sm"
       >
         <NuxtImg
-          src="/images/landing/langue_arabe.svg"
+          src="/images/landing/arab_language.svg"
           alt="Lettre shine"
           class="w-4 lg:w-6"
         />

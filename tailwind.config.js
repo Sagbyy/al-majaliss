@@ -25,7 +25,11 @@ const tailwindConfig = {
           100: '#C05325',
           150: '#934220',
         },
+        'custom-blue': '#009498',
+        gold: '#B9842D',
         'red-brown': '#564646',
+        discord: '#7289DA',
+        'dark-discord': '#576FC3',
       },
       fontFamily: {
         samir: ['SamirKhouajaMaghribi', 'sans-serif'],

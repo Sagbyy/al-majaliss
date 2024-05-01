@@ -11,11 +11,10 @@ const swiper = useSwiper()
 <template>
   <button
     :class="
-      (swiper.isBeginning
-        ? 'cursor-default bg-custom-orange-100/30'
-        : 'bg-custom-orange-100') + (vertical ? ' flex-row ' : ' flex-col ') +
-      ' flex gap-8 h-auto items-center justify-center rounded-full border-4 border-white p-4 transition-colors' +
-      (swiper.isBeginning ? '' : ' hover:bg-custom-orange-150')
+      (swiper.isBeginning ? 'bg-gold/30 cursor-default' : 'bg-gold') +
+      (vertical ? ' flex-row ' : ' flex-col ') +
+      ' flex h-auto items-center justify-center gap-8 rounded-full border-4 border-white p-4 transition-colors' +
+      (swiper.isBeginning ? '' : ' hover:bg-yellow-700')
     "
     @click="swiper.slidePrev()"
   >
@@ -34,11 +33,9 @@ const swiper = useSwiper()
   </button>
   <button
     :class="
-      (swiper.isEnd
-        ? 'cursor-default bg-custom-orange-100/30'
-        : 'bg-custom-orange-100') +
+      (swiper.isEnd ? 'bg-gold/30 cursor-default' : 'bg-gold') +
       ' flex h-auto items-center justify-center rounded-full border-4 border-white p-4 transition-colors' +
-      (swiper.isEnd ? '' : ' hover:bg-custom-orange-150')
+      (swiper.isEnd ? '' : ' hover:bg-yellow-700')
     "
     @click="swiper.slideNext()"
   >

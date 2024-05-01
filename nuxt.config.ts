@@ -5,6 +5,13 @@ export default defineNuxtConfig({
   // Modules
   modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@nuxt/image'],
 
+  // Compiler
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => ['lite-youtube'].includes(tag),
+    },
+  },
+
   // Envrioment Variables
   runtimeConfig: {
     public: {
@@ -29,7 +36,9 @@ export default defineNuxtConfig({
             "Notre mission est de faciliter l'accès aux sciences religieuses en référençant tous les instituts de France dans un seul et même endroit afin que tu puisses les comparer entre eux et choisir celui qui te correspond vraiment !",
         },
       ],
-      link: [{ rel: 'icon', type: 'image/png', href: '/moon.png' }],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/majaliss_logo.svg' },
+      ],
     },
   },
 
