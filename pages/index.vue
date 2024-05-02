@@ -2,6 +2,7 @@
 // Imports components
 import LandingMosqueeCard from '~/components/ui/LandingMosqueeCard.vue'
 import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
+import institutes from '~/data/institutes'
 
 // Imports Libraries
 import { SwiperSlide, Swiper } from 'swiper/vue'
@@ -13,78 +14,6 @@ const toast = useToast()
 const subscribeModal = ref(false)
 
 const emailInputValue = ref('')
-const mosquees = [
-  {
-    name: 'Institut Ilm',
-    address: 'Paris, Île-de-France',
-    image: '/images/landing/schools/school_1.jpg',
-    description:
-      "L'institution Ilm est une école qui propose des cours de religion, de Coran et d'arabe. L'école est située à Paris, en France.",
-    website: '',
-    type: 'Cours payants',
-    courses: {
-      islamic: true,
-      quran: true,
-      arabic: true,
-    },
-  },
-  {
-    name: "L'arabe facile",
-    address: 'Lyon, Auvergne-Rhône-Alpes',
-    image: '/images/landing/schools/school_2.jpg',
-    description:
-      "L'Arabe Facile est une école qui est réputée pour son enseignement de la langue arabe. L'école est située à Lyon, en France.",
-    website: '',
-    type: 'Cours payants',
-    courses: {
-      islamic: false,
-      quran: true,
-      arabic: true,
-    },
-  },
-  {
-    name: 'Ecole Al-Mihrab',
-    address: 'En ligne',
-    image: '/images/landing/schools/school_3.jpg',
-    description:
-      "L'école Al-Mihrab est une école qui a pu accueillir des milliers d'élèves depuis sa création.",
-    website: '',
-    type: 'Cours gratuits',
-    courses: {
-      islamic: true,
-      quran: false,
-      arabic: true,
-    },
-  },
-  {
-    name: 'Institut Musulman',
-    address: "Marseille, Provence-Alpes-Côte d'Azur",
-    image: '/images/landing/schools/school_4.jpg',
-    description:
-      "L'Institut Musulman est une institut qui propose des cours de religion et de Coran. L'institut à permis à des milliers de personnes d'apprendre leur religion et de se rapprocher d'Allah.",
-    website: '',
-    type: 'Cours gratuits',
-    courses: {
-      islamic: true,
-      quran: true,
-      arabic: false,
-    },
-  },
-  {
-    name: 'Madrassa Saleh',
-    address: 'Gagny, Île-de-France',
-    image: '/images/landing/schools/school_5.png',
-    description:
-      'Madrassa Saleh de Gagny est une madrassa situé à Gagny, en France. Elle est la plus grande madrassa de Gagny, et accueille des élèves de tout âge',
-    website: '',
-    type: 'Cours payants',
-    courses: {
-      islamic: true,
-      quran: false,
-      arabic: false,
-    },
-  },
-]
 
 // Hooks cycle
 onMounted(() => {
@@ -167,6 +96,15 @@ const addContactToList = () => {
       updateEnabled: false,
     }),
   }
+
+  if (!emailInputValue.value)
+    return toast.add({
+      title: 'Erreur',
+      description: 'Veuillez renseigner une adresse email',
+      icon: 'i-heroicons-x-circle',
+      color: 'red',
+      timeout: 5000,
+    })
 
   fetch('https://api.brevo.com/v3/contacts', options)
     .then((response) => response.json())
@@ -256,7 +194,7 @@ const addContactToList = () => {
         Rejoignez le discord pour être informé des dernières nouveautés.
       </p>
       <a
-        class="bg-discord hover:bg-dark-discord mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md py-3 text-center font-medium text-white transition-colors"
+        class="mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-discord py-3 text-center font-medium text-white transition-colors hover:bg-dark-discord"
         href="https://discord.gg/"
         target="_blank"
       >
@@ -307,7 +245,7 @@ const addContactToList = () => {
           </div>
           <div class="relative">
             <h1
-              class="home__item_left_effect text-custom-blue my-7 font-dm-serif text-3xl opacity-0 sm:text-2xl lg:text-4xl"
+              class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-blue opacity-0 sm:text-2xl lg:text-4xl"
             >
               Majaliss, la plateforme de référence pour apprendre sa religion
             </h1>
@@ -339,7 +277,7 @@ const addContactToList = () => {
         <div class="lg:pr-16">
           <div>
             <p
-              class="home__item_left_effect text-gold relative mb-5 inline-block font-syne text-base font-semibold opacity-0 sm:text-lg lg:text-xl"
+              class="home__item_left_effect relative mb-5 inline-block font-syne text-base font-semibold text-gold opacity-0 sm:text-lg lg:text-xl"
             >
               Pss ! Ne rate surtout pas la sortie du site
               <NuxtImg
@@ -369,7 +307,7 @@ const addContactToList = () => {
             />
 
             <button
-              class="bg-gold hidden h-full w-2/5 rounded-xl py-4 text-center font-syne text-base text-white transition-colors hover:bg-yellow-700 sm:block"
+              class="hidden h-full w-2/5 rounded-xl bg-gold py-4 text-center font-syne text-base text-white transition-colors hover:bg-yellow-700 sm:block"
               @click="addContactToList"
             >
               Être alerté
@@ -397,7 +335,7 @@ const addContactToList = () => {
             />
           </div>
           <button
-            class="home__item_left_effect bg-gold relative z-20 block h-14 w-full rounded-xl text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-yellow-700 sm:hidden"
+            class="home__item_left_effect relative z-20 block h-14 w-full rounded-xl bg-gold text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-yellow-700 sm:hidden"
             @click="addContactToList"
           >
             Être alerté
@@ -415,11 +353,11 @@ const addContactToList = () => {
           :speed="700"
         >
           <SwiperSlide
-            v-for="(mosquee, index) in mosquees"
+            v-for="(institute, index) in institutes"
             :key="index"
             v-slot="{ isActive }"
           >
-            <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
+            <LandingMosqueeCard :isActive="isActive" v-bind="institute" />
           </SwiperSlide>
           <div
             class="absolute -right-[30px] top-1/2 flex h-auto -translate-y-1/2 flex-col gap-3"
@@ -440,11 +378,11 @@ const addContactToList = () => {
           wrapper-class="flex items-center"
         >
           <SwiperSlide
-            v-for="(mosquee, index) in mosquees"
+            v-for="(institute, index) in institutes"
             :key="index"
             v-slot="{ isActive }"
           >
-            <LandingMosqueeCard :isActive="isActive" v-bind="mosquee" />
+            <LandingMosqueeCard :isActive="isActive" v-bind="institute" />
           </SwiperSlide>
           <div
             class="absolute -bottom-8 left-1/2 flex h-auto -translate-x-1/2 gap-3"

@@ -3,13 +3,17 @@ defineProps<{
   name: string
   address: string
   image: string
-  description: string
-  website: string
   type: string
   courses: {
     islamic: boolean
     quran: boolean
     arabic: boolean
+  }
+  socials: {
+    phone: string | null
+    website: string | null
+    instagram: string | null
+    telegram: string | null
   }
   isActive: boolean
 }>()
@@ -18,7 +22,7 @@ defineProps<{
 <template>
   <div
     :class="
-      'flex h-auto w-auto flex-col gap-5 rounded-[32px] bg-white p-6 font-syne text-sm shadow-md drop-shadow-landing-card transition-transform duration-1000 ease-out sm:p-8' +
+      'flex h-auto w-auto min-w-64 flex-col gap-5 rounded-[32px] bg-white p-6 font-syne text-sm shadow-md drop-shadow-landing-card transition-transform duration-1000 ease-out sm:p-8' +
       (isActive ? ' -rotate-2 hover:rotate-0' : '') +
       ' hover:-rotate-2'
     "
@@ -30,12 +34,14 @@ defineProps<{
         class="h-12 w-12 rounded-full lg:h-[70px] lg:w-[70px]"
       />
       <div class="flex w-full flex-col lg:gap-2">
-        <div class="flex flex-row items-center justify-between gap-2">
-          <p class="text-custom-blue font-dm-serif text-[14px] lg:text-[20px]">
+        <div
+          class="items-left flex flex-col gap-2 lg:flex-row lg:justify-between"
+        >
+          <p class="font-dm-serif text-[14px] text-custom-blue lg:text-[20px]">
             {{ name }}
           </p>
           <p
-            class="text-nowrap rounded-xl border-[1px] p-1 px-2 text-[8.5px] lg:p-2 lg:text-sm"
+            class="inline-block max-w-24 text-nowrap rounded-xl border-[1px] p-1 px-2 text-center text-[8.5px] lg:max-w-max lg:p-2 lg:text-sm"
           >
             {{ type }}
           </p>
@@ -46,56 +52,75 @@ defineProps<{
       </div>
     </div>
     <div
-      class="flex flex-row justify-between gap-3 text-center text-[10px] text-neutral-500 lg:gap-5 lg:px-6 lg:text-base"
+      class="flex flex-row justify-center gap-3 text-center text-[10px] text-neutral-500 lg:gap-5 lg:px-6 lg:text-base"
     >
-      <div class="group w-1/4 cursor-pointer">
+      <a
+        :href="'tel:' + socials.phone"
+        v-if="socials.phone"
+        class="group w-1/4 cursor-pointer"
+      >
         <div
-          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
+          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-gold lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="material-symbols:call"
             size="20px"
-            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="w-3 text-gold transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Appeler</p>
-      </div>
-      <div class="group w-1/4 cursor-pointer">
+      </a>
+      <a
+        :href="socials.website"
+        target="_blank"
+        v-if="socials.website"
+        class="group w-1/4 cursor-pointer"
+      >
         <div
-          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
+          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-gold lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="tabler:click"
             size="20px"
-            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="w-3 text-gold transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Site web</p>
-      </div>
-      <div class="group w-1/4 cursor-pointer">
+      </a>
+      <a
+        :href="socials.instagram"
+        target="_blank"
+        v-if="socials.instagram"
+        class="group w-1/4 cursor-pointer"
+      >
         <div
-          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
+          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-gold lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="bxl:instagram-alt"
             size="20px"
-            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="w-3 text-gold transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Instagram</p>
-      </div>
-      <div class="group w-1/4 cursor-pointer">
+      </a>
+      <a
+        :href="socials.telegram"
+        target="_blank"
+        v-if="socials.telegram"
+        class="group w-1/4 cursor-pointer"
+      >
         <div
-          class="group-hover:bg-gold mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors lg:h-[50px] lg:w-[50px]"
+          class="mx-auto mb-2 flex h-[35px] w-[35px] items-center justify-center rounded-full bg-beige-50 transition-colors group-hover:bg-gold lg:h-[50px] lg:w-[50px]"
         >
           <Icon
             name="simple-icons:telegram"
             size="20px"
-            class="text-gold w-3 transition-colors group-hover:text-beige-50 lg:w-5"
+            class="w-3 text-gold transition-colors group-hover:text-beige-50 lg:w-5"
           />
         </div>
         <p>Telegram</p>
-      </div>
+      </a>
     </div>
     <div class="flex flex-col gap-3">
       <div
