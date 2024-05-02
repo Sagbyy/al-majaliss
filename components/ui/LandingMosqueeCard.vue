@@ -33,9 +33,9 @@ defineProps<{
         :alt="name"
         class="h-12 w-12 rounded-full lg:h-[70px] lg:w-[70px]"
       />
-      <div class="flex w-full flex-col lg:gap-2">
+      <div class="flex w-full flex-col lg:gap-1">
         <div
-          class="items-left flex flex-col gap-2 lg:flex-row lg:justify-between"
+          class="items-left flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between"
         >
           <p class="font-dm-serif text-[14px] text-custom-blue lg:text-[20px]">
             {{ name }}

@@ -11,7 +11,7 @@ import gsap from 'gsap'
 // Data
 const config = useRuntimeConfig()
 const toast = useToast()
-const subscribeModal = ref(true)
+const subscribeModal = ref(false)
 
 const emailInputValue = ref('')
 

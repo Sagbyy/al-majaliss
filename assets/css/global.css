@@ -13,3 +13,7 @@
   color: #fff !important;
   background: #b9832dbe !important;
 }
+
+*:focus {
+  outline-color: #009498 !important;
+}

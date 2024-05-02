@@ -17,9 +17,9 @@ const institutes = [
     },
   },
   {
-    name: 'Âme & Conscience',
+    name: 'B à Ba',
     address: 'En ligne',
-    image: '/images/landing/schools/ame_et_conscience.jpg',
+    image: '/images/landing/schools/b_a_ba.jpg',
     type: 'Cours gratuits',
     courses: {
       islamic: true,
@@ -28,9 +28,9 @@ const institutes = [
     },
     socials: {
       phone: null,
-      website: 'https://ameconscience.org/',
-      instagram: 'https://www.instagram.com/ame_conscience/',
-      telegram: 'https://t.me/ame_conscience',
+      website: 'https://b-a-ba.org/',
+      instagram: 'https://www.instagram.com/b_a_ba_/',
+      telegram: 'https://t.me/B_a_BA_General',
     },
   },
   {
