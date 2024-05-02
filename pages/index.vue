@@ -166,7 +166,7 @@ const addContactToList = () => {
 
   fetch('https://api.brevo.com/v3/contacts', options)
     .then((response) => response.json())
-    .then((response) => {
+    .then(async (response) => {
       if (response.code) {
         switch (response.code) {
           case 'duplicate_parameter':
@@ -195,6 +195,8 @@ const addContactToList = () => {
         // Set the user as subscribed
         localStorage.setItem('subscribed', 'true')
         alreadySubscribe.value = true
+        
+        await redisService.incrementEmailCounter();
 
         toast.add({
           title: 'Succès',
