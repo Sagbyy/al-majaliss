@@ -11,7 +11,7 @@ import gsap from 'gsap'
 // Data
 const config = useRuntimeConfig()
 const toast = useToast()
-const subscribeModal = ref(false)
+const subscribeModal = ref(true)
 
 const emailInputValue = ref('')
 
@@ -199,7 +199,9 @@ const addContactToList = () => {
         target="_blank"
       >
         <Icon name="ic:baseline-discord" color="white" size="20" />
-        <p>Rejoindre le discord</p>
+        <a href="https://discord.gg/MfqAvuca5W" target="_blank"
+          >Rejoindre le discord</a
+        >
       </a>
     </UCard>
   </UModal>
