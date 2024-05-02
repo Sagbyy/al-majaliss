@@ -303,7 +303,7 @@ const addContactToList = () => {
           >
             <input
               type="email"
-              class="h-full w-full text-base focus:outline-none sm:mb-2 sm:rounded-l-2xl"
+              class="h-full w-full text-base focus:!outline-none sm:mb-2 sm:rounded-l-2xl"
               placeholder="exemple@gmail.com"
               v-model="emailInputValue"
             />
