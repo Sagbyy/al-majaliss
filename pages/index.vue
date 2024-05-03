@@ -16,7 +16,7 @@ const config = useRuntimeConfig()
 
 const toast = useToast()
 
-const htmlAlreadySubscribe: Ref<HTMLDivElement | null> = ref(null)
+const isNowSubscribed = ref(false)
 
 const subscribeModal = ref(false)
 
@@ -167,12 +167,7 @@ const addContactToList = () => {
         alreadySubscribe.value = true
 
         // Set the opacity to 100%
-        nextTick(() => {
-          console.log(htmlAlreadySubscribe.value)
-
-          htmlAlreadySubscribe.value?.classList.remove('opacity-0')
-          htmlAlreadySubscribe.value?.classList.add('opacity-100')
-        })
+        isNowSubscribed.value = true
 
         toast.add({
           title: 'Succès',
@@ -395,8 +390,7 @@ const addContactToList = () => {
         <!-- Already subscribe -->
         <div
           v-else
-          class="home__item_left_effect item_already_subscribed opacity-0 lg:pr-16"
-          ref="htmlAlreadySubscribe"
+          :class="'home__item_left_effect item_already_subscribed ' + (isNowSubscribed ? 'opacity-100' : 'opacity-0') + ' lg:pr-16'"
         >
           <p
             class="relative mb-5 inline-block font-syne text-base text-red-brown sm:text-lg lg:text-xl"
@@ -441,8 +435,9 @@ const addContactToList = () => {
           :speed="700"
           :modules="modules"
           :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
+            delay: 3500,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
           }"
         >
           <SwiperSlide
@@ -471,8 +466,9 @@ const addContactToList = () => {
           wrapper-class="flex items-center"
           :modules="modules"
           :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
+            delay: 3500,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
           }"
         >
           <SwiperSlide
