@@ -13,13 +13,29 @@ const modules = [Autoplay]
 
 // Data
 const config = useRuntimeConfig()
+
 const toast = useToast()
+
+const htmlAlreadySubscribe: Ref<HTMLDivElement | null> = ref(null)
+
 const subscribeModal = ref(false)
+
 const screenZoom = ref(false)
 
 const emailInputValue = ref('')
 
+const alreadySubscribe = ref(false)
+
 // Hooks cycle
+onBeforeMount(() => {
+  // Check if the user is already subscribed
+  const alreadySubscribeCache = localStorage.getItem('subscribed')
+
+  alreadySubscribeCache === 'true'
+    ? (alreadySubscribe.value = true)
+    : (alreadySubscribe.value = false)
+})
+
 onMounted(() => {
   // Check if the screen is zoomed at 125%
   const zoomLevel = Math.round(window.devicePixelRatio * 100)
@@ -143,7 +159,20 @@ const addContactToList = () => {
           timeout: 5000,
         })
       } else {
+        // Open modal
         subscribeModal.value = true
+
+        // Set the user as subscribed
+        localStorage.setItem('subscribed', 'true')
+        alreadySubscribe.value = true
+
+        // Set the opacity to 100%
+        nextTick(() => {
+          console.log(htmlAlreadySubscribe.value)
+
+          htmlAlreadySubscribe.value?.classList.remove('opacity-0')
+          htmlAlreadySubscribe.value?.classList.add('opacity-100')
+        })
 
         toast.add({
           title: 'Succès',
@@ -207,13 +236,11 @@ const addContactToList = () => {
       </p>
       <a
         class="mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-discord py-3 text-center font-medium text-white transition-colors hover:bg-dark-discord"
-        href="https://discord.gg/"
+        href="https://discord.gg/MfqAvuca5W"
         target="_blank"
       >
         <Icon name="ic:baseline-discord" color="white" size="20" />
-        <a href="https://discord.gg/MfqAvuca5W" target="_blank"
-          >Rejoindre le discord</a
-        >
+        <p>Rejoindre le discord</p>
       </a>
     </UCard>
   </UModal>
@@ -297,7 +324,7 @@ const addContactToList = () => {
           </p>
         </div>
 
-        <div class="lg:pr-16">
+        <div v-if="!alreadySubscribe" class="lg:pr-16">
           <div>
             <p
               class="home__item_left_effect relative mb-5 inline-block font-syne text-base font-semibold text-gold opacity-0 sm:text-lg lg:text-xl"
@@ -363,6 +390,44 @@ const addContactToList = () => {
           >
             Être alerté
           </button>
+        </div>
+
+        <!-- Already subscribe -->
+        <div
+          v-else
+          class="home__item_left_effect item_already_subscribed opacity-0 lg:pr-16"
+          ref="htmlAlreadySubscribe"
+        >
+          <p
+            class="relative mb-5 inline-block font-syne text-base text-red-brown sm:text-lg lg:text-xl"
+          >
+            <span class="font-medium text-gold"
+              >Vous êtes déjà inscrit à la liste de contact</span
+            >, vous pouvez rejoindre le discord dès maintenant pour être informé
+            des dernières nouveautés !
+            <a
+              class="mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-discord py-3 text-center font-medium text-white transition-colors hover:bg-dark-discord lg:w-2/4"
+              href="https://discord.gg/MfqAvuca5W"
+              target="_blank"
+            >
+              <Icon name="ic:baseline-discord" color="white" size="20" />
+              <p class="text-base font-light">Rejoindre le discord</p>
+            </a>
+            <NuxtImg
+              src="/images/landing/star.svg"
+              alt="Etoile"
+              height="24"
+              width="24"
+              class="home__stars absolute -right-6 -top-7"
+            />
+            <NuxtImg
+              src="/images/landing/star.svg"
+              alt="Etoile"
+              height="14"
+              width="14"
+              class="home__stars absolute -left-8 top-0"
+            />
+          </p>
         </div>
       </div>
 
