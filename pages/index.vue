@@ -234,7 +234,7 @@ const addContactToList = () => {
     <div
       :class="
         'relative mx-auto flex h-auto w-full max-w-[2000px] flex-col rounded-[50px] bg-beige-50 p-10 text-6xl ' +
-        (screenZoom ? 'md:p-16' : 'md:p-28') +
+        (screenZoom ? 'md:p-16' : 'md:p-20') +
         ' lg:h-full lg:flex-row'
       "
     >
