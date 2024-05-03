@@ -239,27 +239,29 @@ const addContactToList = () => {
       "
     >
       <div
-        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:w-[60%] lg:justify-between lg:gap-0"
+        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:w-[60%] lg:justify-center lg:gap-10"
       >
         <div>
-          <NuxtImg
-            src="/majaliss_logo.svg"
-            alt="Logo Majaliss"
-            height="57"
-            class="home__item_left_effect h-20 opacity-0"
-          />
-          <div class="relative inline-block">
-            <p
-              class="home__item_left_effect inline-block rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-black opacity-0"
-            >
-              Coming soon
-            </p>
+          <div class="flex flex-row items-center gap-8">
             <NuxtImg
-              src="/images/landing/star.svg"
-              alt="Etoile"
-              height="40"
-              class="home__stars absolute -right-14 top-9 scale-0"
+              src="/majaliss_logo.svg"
+              alt="Logo Majaliss"
+              height="57"
+              class="home__item_left_effect h-20 opacity-0"
             />
+            <div class="relative">
+              <p
+                class="home__item_left_effect rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-black opacity-0"
+              >
+                Coming soon
+              </p>
+              <NuxtImg
+                src="/images/landing/star.svg"
+                alt="Etoile"
+                height="40"
+                class="home__stars absolute -right-14 top-0 scale-0"
+              />
+            </div>
           </div>
           <div class="relative">
             <h1
