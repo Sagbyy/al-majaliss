@@ -7,6 +7,9 @@ import institutes from '~/data/institutes'
 // Imports Libraries
 import { SwiperSlide, Swiper } from 'swiper/vue'
 import gsap from 'gsap'
+import { Autoplay } from 'swiper/modules'
+
+const modules = [Autoplay]
 
 // Data
 const config = useRuntimeConfig()
@@ -371,6 +374,11 @@ const addContactToList = () => {
           slides-per-view="auto"
           space-between="30"
           :speed="700"
+          :modules="modules"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
         >
           <SwiperSlide
             v-for="(institute, index) in institutes"
@@ -396,6 +404,11 @@ const addContactToList = () => {
           space-between="30"
           :speed="700"
           wrapper-class="flex items-center"
+          :modules="modules"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
         >
           <SwiperSlide
             v-for="(institute, index) in institutes"
