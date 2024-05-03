@@ -12,11 +12,20 @@ import gsap from 'gsap'
 const config = useRuntimeConfig()
 const toast = useToast()
 const subscribeModal = ref(false)
+const screenZoom = ref(false)
 
 const emailInputValue = ref('')
 
 // Hooks cycle
 onMounted(() => {
+  // Check if the screen is zoomed at 125%
+  const zoomLevel = Math.round(window.devicePixelRatio * 100)
+  if (zoomLevel === 125) {
+    screenZoom.value = true
+  } else {
+    screenZoom.value = false
+  }
+
   // GSAP
   const TL = gsap.timeline({ delay: 0.5 })
 
@@ -207,7 +216,10 @@ const addContactToList = () => {
   </UModal>
 
   <div
-    class="relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen lg:overflow-y-hidden lg:p-20"
+    :class="
+      'relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen ' +
+      (screenZoom ? 'lg:p-10' : 'lg:p-20')
+    "
   >
     <p
       class="home__first_arab_text absolute -top-16 left-12 z-10 -translate-x-[200%] font-samir text-[300px] text-beige-100"
@@ -220,7 +232,11 @@ const addContactToList = () => {
       مجالس
     </p>
     <div
-      class="relative flex h-auto w-full flex-col rounded-[50px] bg-beige-50 p-10 text-6xl md:p-[5%] lg:h-full lg:flex-row"
+      :class="
+        'relative mx-auto flex h-auto w-full max-w-[2000px] flex-col rounded-[50px] bg-beige-50 p-10 text-6xl ' +
+        (screenZoom ? 'md:p-16' : 'md:p-28') +
+        ' lg:h-full lg:flex-row'
+      "
     >
       <div
         class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:w-[60%] lg:justify-between lg:gap-0"
@@ -247,7 +263,7 @@ const addContactToList = () => {
           </div>
           <div class="relative">
             <h1
-              class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-blue opacity-0 sm:text-2xl lg:text-4xl"
+              class="home__item_left_effect text-custom-blue-100 my-7 font-dm-serif text-3xl opacity-0 sm:text-2xl lg:text-4xl"
             >
               Majaliss, la plateforme de référence pour apprendre sa religion
             </h1>

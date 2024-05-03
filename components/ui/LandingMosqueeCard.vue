@@ -33,15 +33,17 @@ defineProps<{
         :alt="name"
         class="h-12 w-12 rounded-full lg:h-[70px] lg:w-[70px]"
       />
-      <div class="flex w-full flex-col lg:gap-1">
+      <div class="flex w-full flex-col">
         <div
-          class="items-left flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between"
+          class="items-left flex flex-row items-center justify-between gap-2"
         >
-          <p class="font-dm-serif text-[14px] text-custom-blue lg:text-[20px]">
+          <p
+            class="text-custom-blue-100 font-dm-serif text-[14px] lg:text-[20px]"
+          >
             {{ name }}
           </p>
           <p
-            class="inline-block max-w-24 text-nowrap rounded-xl border-[1px] p-1 px-2 text-center text-[8.5px] lg:max-w-max lg:p-2 lg:text-sm"
+            class="inline-block max-w-16 text-nowrap rounded-xl border-[1px] p-1 text-center text-[8.5px] lg:max-w-max lg:p-2 lg:text-sm"
           >
             {{ type }}
           </p>
