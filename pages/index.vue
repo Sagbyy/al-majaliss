@@ -390,7 +390,11 @@ const addContactToList = () => {
         <!-- Already subscribe -->
         <div
           v-else
-          :class="'home__item_left_effect item_already_subscribed ' + (isNowSubscribed ? 'opacity-100' : 'opacity-0') + ' lg:pr-16'"
+          :class="
+            'home__item_left_effect item_already_subscribed ' +
+            (isNowSubscribed ? 'opacity-100' : 'opacity-0') +
+            ' lg:pr-16'
+          "
         >
           <p
             class="relative mb-5 inline-block font-syne text-base text-red-brown sm:text-lg lg:text-xl"

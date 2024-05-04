@@ -1,5 +1,56 @@
 const institutes = [
   {
+    name: 'Institut Din-Ul-Qayyima',
+    address: 'En ligne',
+    image: '/images/landing/schools/din-ul-qayyima.jpeg',
+    type: 'Cours payants',
+    courses: {
+      islamic: true,
+      quran: false,
+      arabic: false,
+    },
+    socials: {
+      phone: null,
+      website: 'https://institut.dinulqayyima.fr/',
+      instagram: 'https://www.instagram.com/dinulqayyima/',
+      telegram: null,
+    },
+  },
+  {
+    name: 'Institut Addani',
+    address: 'Villeneuve St George, Île-de-France',
+    image: '/images/landing/schools/addani.jpg',
+    type: 'Cours payants',
+    courses: {
+      islamic: true,
+      quran: true,
+      arabic: true,
+    },
+    socials: {
+      phone: '+33184606047',
+      website: 'https://www.institut-addani.fr/',
+      instagram: 'https://www.instagram.com/institutaddani',
+      telegram: null,
+    },
+  },
+  {
+    name: 'Institut Sounnah',
+    address: 'En ligne',
+    image: '/images/landing/schools/sounnah.svg',
+    type: 'Cours payants',
+    courses: {
+      islamic: true,
+      quran: true,
+      arabic: true,
+    },
+    socials: {
+      phone: null,
+      website: 'https://www.institutsounnah.com/',
+      instagram: 'https://www.instagram.com/institutsounnah/',
+      telegram: 'https://telegram.me/InstitutSounnah',
+    },
+  },
+  {
     name: 'Centre Shatibi',
     address: 'Stains, Île-de-France',
     image: '/images/landing/schools/shatibi.png',
@@ -31,40 +82,6 @@ const institutes = [
       website: 'https://b-a-ba.org/',
       instagram: 'https://www.instagram.com/b_a_ba_/',
       telegram: 'https://t.me/B_a_BA_General',
-    },
-  },
-  {
-    name: 'Institut Addani',
-    address: 'Villeneuve St George, Île-de-France',
-    image: '/images/landing/schools/addani.jpg',
-    type: 'Cours payants',
-    courses: {
-      islamic: true,
-      quran: true,
-      arabic: true,
-    },
-    socials: {
-      phone: '+33184606047',
-      website: 'https://www.institut-addani.fr/',
-      instagram: 'https://www.instagram.com/institutaddani',
-      telegram: null,
-    },
-  },
-  {
-    name: 'Institut Din-Ul-Qayyima',
-    address: 'En ligne',
-    image: '/images/landing/schools/din-ul-qayyima.jpeg',
-    type: 'Cours payants',
-    courses: {
-      islamic: true,
-      quran: false,
-      arabic: false,
-    },
-    socials: {
-      phone: null,
-      website: 'https://institut.dinulqayyima.fr/',
-      instagram: 'https://www.instagram.com/dinulqayyima/',
-      telegram: null,
     },
   },
   {
