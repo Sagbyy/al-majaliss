@@ -7,16 +7,20 @@ import Objective from '~/components/ui/Objective.vue'
 
 // Imports Libraries
 import { SwiperSlide, Swiper } from 'swiper/vue'
+
 import gsap from 'gsap'
 import {
   Autoplay,
   Keyboard,
   Mousewheel,
-  Pagination,
-  Navigation,
 } from 'swiper/modules'
 
 const modules = [Autoplay, Keyboard, Mousewheel]
+
+// Services
+import { RedisService } from '~/server/services/redis.service'
+
+const redisService: RedisService = new RedisService()
 
 // Data
 const config = useRuntimeConfig()
@@ -126,6 +130,10 @@ onMounted(() => {
   })
 })
 
+onNuxtReady(() => {
+  redisService.poller()
+})
+
 // Methods
 const addContactToList = () => {
   let errorDescription =
@@ -158,7 +166,7 @@ const addContactToList = () => {
 
   fetch('https://api.brevo.com/v3/contacts', options)
     .then((response) => response.json())
-    .then((response) => {
+    .then(async (response) => {
       if (response.code) {
         switch (response.code) {
           case 'duplicate_parameter':
@@ -187,6 +195,8 @@ const addContactToList = () => {
         // Set the user as subscribed
         localStorage.setItem('subscribed', 'true')
         alreadySubscribe.value = true
+        
+        await redisService.incrementEmailCounter();
 
         toast.add({
           title: 'Succès',
@@ -364,7 +374,7 @@ const addContactToList = () => {
                 class="home__stars absolute -left-8 top-0 scale-0"
               />
             </p>
-            <Objective />
+            <Objective :objective-value="redisService.emailCounter" />
           </div>
           <div
             class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne opacity-0 sm:mb-0 sm:h-16 sm:flex-row sm:rounded-xl sm:px-6"
@@ -423,7 +433,7 @@ const addContactToList = () => {
               >, vous pouvez rejoindre le discord dès maintenant pour être
               informé des dernières nouveautés !
             </p>
-            <Objective />
+            <Objective :objective-value="redisService.emailCounter" />
             <a
               class="mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-discord py-3 text-center font-medium text-white transition-colors hover:bg-dark-discord lg:w-2/4"
               href="https://discord.gg/MfqAvuca5W"
@@ -454,34 +464,34 @@ const addContactToList = () => {
           <a
             href="/"
             target="_blank"
-            class="home__socials bg-custom-blue-50 group flex h-12 w-12 items-center justify-center rounded-full opacity-0 transition-colors hover:bg-custom-blue-100"
+            class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
           >
             <Icon
               name="mdi:twitter"
               size="18"
-              class="group-hover:text-custom-blue-50 text-custom-blue-100 transition-colors"
+              class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
             />
           </a>
           <a
             href="/"
             target="_blank"
-            class="home__socials bg-custom-blue-50 group flex h-12 w-12 items-center justify-center rounded-full opacity-0 transition-colors hover:bg-custom-blue-100"
+            class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
           >
             <Icon
               name="ri:instagram-fill"
               size="18"
-              class="group-hover:text-custom-blue-50 text-custom-blue-100 transition-colors"
+              class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
             />
           </a>
           <a
             href="/"
             target="_blank"
-            class="home__socials bg-custom-blue-50 group flex h-12 w-12 items-center justify-center rounded-full opacity-0 transition-colors hover:bg-custom-blue-100"
+            class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
           >
             <Icon
               name="fa-brands:tiktok"
               size="18"
-              class="group-hover:text-custom-blue-50 text-custom-blue-100 transition-colors"
+              class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
             />
           </a>
         </div>

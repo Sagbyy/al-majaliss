@@ -62,5 +62,17 @@ export default defineNuxtConfig({
     preference: 'light',
   },
 
-  ssr: true,
+  // Nitro
+  nitro: {
+    storage: {
+      redis: {
+        driver: process.env.NITRO_STORAGE_DRIVER,
+        port: process.env.REDIS_PORT,
+        host: process.env.REDIS_HOST,
+        username: process.env.REDIS_USER_NAME,
+        password: process.env.REDIS_USER_PASSWORD,
+        db: 0,
+      }
+    }
+  }
 })
