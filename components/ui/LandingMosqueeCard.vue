@@ -22,7 +22,7 @@ defineProps<{
 <template>
   <div
     :class="
-      'flex h-auto w-auto min-w-64 flex-col gap-5 rounded-[32px] bg-white p-6 font-syne text-sm shadow-md drop-shadow-landing-card transition-transform duration-1000 ease-out sm:p-8' +
+      'flex h-auto w-auto min-w-64 flex-col gap-5 rounded-[32px] bg-white p-6 font-syne text-sm shadow-landing-card transition-transform duration-1000 ease-out sm:p-8' +
       (isActive ? ' -rotate-2 hover:rotate-0' : '') +
       ' hover:-rotate-2'
     "
@@ -38,7 +38,7 @@ defineProps<{
           class="items-left flex flex-row items-center justify-between gap-2"
         >
           <p
-            class="text-custom-blue-100 font-dm-serif text-[14px] lg:text-[20px]"
+            class="font-dm-serif text-[14px] text-custom-blue-100 lg:text-[20px]"
           >
             {{ name }}
           </p>

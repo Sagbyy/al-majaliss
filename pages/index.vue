@@ -3,20 +3,25 @@
 import LandingMosqueeCard from '~/components/ui/LandingMosqueeCard.vue'
 import LandingSwiperNavButton from '~/components/ui/LandingSwiperNavButton.vue'
 import institutes from '~/data/institutes'
+import Objective from '~/components/ui/Objective.vue'
 
 // Imports Libraries
 import { SwiperSlide, Swiper } from 'swiper/vue'
 import gsap from 'gsap'
-import { Autoplay } from 'swiper/modules'
+import {
+  Autoplay,
+  Keyboard,
+  Mousewheel,
+  Pagination,
+  Navigation,
+} from 'swiper/modules'
 
-const modules = [Autoplay]
+const modules = [Autoplay, Keyboard, Mousewheel]
 
 // Data
 const config = useRuntimeConfig()
 
 const toast = useToast()
-
-const isNowSubscribed = ref(false)
 
 const subscribeModal = ref(false)
 
@@ -27,7 +32,7 @@ const emailInputValue = ref('')
 const alreadySubscribe = ref(false)
 
 // Hooks cycle
-onBeforeMount(() => {
+onMounted(() => {
   // Check if the user is already subscribed
   const alreadySubscribeCache = localStorage.getItem('subscribed')
 
@@ -45,63 +50,80 @@ onMounted(() => {
     screenZoom.value = false
   }
 
-  // GSAP
-  const TL = gsap.timeline({ delay: 0.5 })
+  nextTick(() => {
+    // GSAP
+    const TL = gsap.timeline({ delay: 0.5 })
 
-  TL.fromTo(
-    '.swiper-slide',
-    {
-      y: -30,
-      scale: 0,
-      rotate: -10,
-    },
-    {
-      y: 0,
-      scale: 1,
-      rotate: 0,
-      duration: 1,
-      ease: 'power2.out',
-      stagger: 0.2,
-    }
-  )
-    .fromTo(
-      '.home__first_arab_text',
+    TL.fromTo(
+      '.swiper-slide',
       {
-        x: '-200%',
-      },
-      { x: 0, duration: 1, ease: 'power2.out' },
-      '<+=0.5'
-    )
-    .fromTo(
-      '.home__second_arab_text',
-      {
-        x: '200%',
-      },
-      { x: 0, duration: 1, ease: 'power2.out' },
-      '<'
-    )
-    .fromTo(
-      '.home__item_left_effect',
-      {
-        opacity: 0,
-        y: -5,
-      },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power2.out' },
-      '<+=0.8'
-    )
-    .fromTo(
-      '.home__stars',
-      {
+        y: -30,
         scale: 0,
+        rotate: -10,
       },
       {
+        y: 0,
         scale: 1,
+        rotate: 0,
         duration: 1,
         ease: 'power2.out',
         stagger: 0.2,
-      },
-      '<+=0.5'
+      }
     )
+      .fromTo(
+        '.home__first_arab_text',
+        {
+          x: '-200%',
+        },
+        { x: 0, duration: 1, ease: 'power2.out' },
+        '<+=0.5'
+      )
+      .fromTo(
+        '.home__second_arab_text',
+        {
+          x: '200%',
+        },
+        { x: 0, duration: 1, ease: 'power2.out' },
+        '<'
+      )
+      .fromTo(
+        '.home__item_left_effect',
+        {
+          opacity: 0,
+          y: -5,
+        },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power2.out' },
+        '<+=0.8'
+      )
+      .fromTo(
+        '.home__socials',
+        {
+          opacity: 0,
+          y: -15,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out',
+          stagger: 0.2,
+        },
+        '<+=0.8'
+      )
+      .fromTo(
+        '.home__stars',
+        {
+          scale: 0,
+        },
+        {
+          scale: 1,
+          duration: 1,
+          ease: 'power2.out',
+          stagger: 0.2,
+        },
+        '<+=0.5'
+      )
+  })
 })
 
 // Methods
@@ -165,9 +187,6 @@ const addContactToList = () => {
         // Set the user as subscribed
         localStorage.setItem('subscribed', 'true')
         alreadySubscribe.value = true
-
-        // Set the opacity to 100%
-        isNowSubscribed.value = true
 
         toast.add({
           title: 'Succès',
@@ -243,7 +262,7 @@ const addContactToList = () => {
   <div
     :class="
       'relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen ' +
-      (screenZoom ? 'lg:p-10' : 'lg:p-20')
+      (screenZoom ? 'lg:p-10' : 'lg:px-20 lg:py-8')
     "
   >
     <p
@@ -259,24 +278,24 @@ const addContactToList = () => {
     <div
       :class="
         'relative mx-auto flex h-auto w-full max-w-[2000px] flex-col rounded-[50px] bg-beige-50 p-10 text-6xl ' +
-        (screenZoom ? 'md:p-16' : 'md:p-20') +
+        (screenZoom ? 'md:p-14' : 'md:p-16') +
         ' lg:h-full lg:flex-row'
       "
     >
       <div
-        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:w-[60%] lg:justify-center lg:gap-10"
+        class="relative z-20 flex h-full w-full flex-col justify-center gap-10 lg:w-[60%] lg:justify-center lg:gap-2"
       >
         <div>
           <div class="flex flex-row items-center gap-8">
             <NuxtImg
               src="/majaliss_logo.svg"
               alt="Logo Majaliss"
-              height="57"
+              height="80"
               class="home__item_left_effect h-20 opacity-0"
             />
             <div class="relative">
               <p
-                class="home__item_left_effect rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-base text-black opacity-0"
+                class="home__item_left_effect rounded-2xl border-[1px] border-slate-200 bg-white px-5 py-3 font-syne text-sm text-black opacity-0"
               >
                 Coming soon
               </p>
@@ -290,9 +309,10 @@ const addContactToList = () => {
           </div>
           <div class="relative">
             <h1
-              class="home__item_left_effect text-custom-blue-100 my-7 font-dm-serif text-3xl opacity-0 sm:text-2xl lg:text-4xl"
+              class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-blue-100 opacity-0 sm:text-2xl lg:text-3xl"
             >
-              Majaliss, la plateforme de référence pour apprendre sa religion
+              Bienvenue sur Majaliss, la plateforme de référence pour apprendre
+              sa religion
             </h1>
             <NuxtImg
               src="/images/landing/star.svg"
@@ -310,21 +330,25 @@ const addContactToList = () => {
             />
           </div>
           <p
-            class="home__item_left_effect pr-4 font-syne text-base font-normal text-red-brown opacity-0 sm:text-lg lg:text-xl"
+            class="home__item_left_effect pr-4 font-syne text-base font-normal text-red-brown opacity-0 sm:text-lg lg:text-lg"
           >
-            Notre mission est de faciliter l'accès aux sciences religieuses en
-            référençant tous les instituts de France dans un seul et même
-            endroit afin que tu puisses les comparer entre eux et choisir celui
-            qui te correspond vraiment !
+            <span class="font-semibold">Pourquoi Majaliss ? </span>Parce que
+            nous croyons que l'accès à l'éducation religieuse devrait être
+            simple et direct ! <br /><br />
+
+            <span class="font-semibold">Comment ça marche ?</span> Majaliss
+            centralise les informations de tous les instituts religieux de
+            France au même endroit pour vous permettre de les découvrir, de les
+            comparer, et de choisir celui qui répond vraiment à vos attentes.
           </p>
         </div>
 
         <div v-if="!alreadySubscribe" class="lg:pr-16">
           <div>
             <p
-              class="home__item_left_effect relative mb-5 inline-block font-syne text-base font-semibold text-gold opacity-0 sm:text-lg lg:text-xl"
+              class="home__item_left_effect relative inline-block font-syne text-base font-semibold text-gold opacity-0 sm:text-sm lg:text-base"
             >
-              Pss ! Ne rate surtout pas la sortie du site
+              Si tu veux que ce projet voit le jour, laisse nous ton mail
               <NuxtImg
                 src="/images/landing/star.svg"
                 alt="Etoile"
@@ -340,9 +364,10 @@ const addContactToList = () => {
                 class="home__stars absolute -left-8 top-0 scale-0"
               />
             </p>
+            <Objective />
           </div>
           <div
-            class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne opacity-0 sm:mb-0 sm:h-20 sm:flex-row sm:rounded-xl sm:px-6"
+            class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne opacity-0 sm:mb-0 sm:h-16 sm:flex-row sm:rounded-xl sm:px-6"
           >
             <input
               type="email"
@@ -352,7 +377,7 @@ const addContactToList = () => {
             />
 
             <button
-              class="hidden h-full w-2/5 rounded-xl bg-gold py-4 text-center font-syne text-base text-white transition-colors hover:bg-yellow-700 sm:block"
+              class="hidden h-full w-2/6 rounded-xl bg-gold text-center font-syne text-base text-white transition-colors hover:bg-yellow-700 sm:block"
               @click="addContactToList"
             >
               Être alerté
@@ -369,7 +394,7 @@ const addContactToList = () => {
               alt="Etoile"
               height="22"
               width="22"
-              class="home__stars absolute -bottom-9 left-[17%] scale-0"
+              class="home__stars absolute -bottom-9 left-[25%] scale-0"
             />
             <NuxtImg
               src="/images/landing/star.svg"
@@ -388,21 +413,17 @@ const addContactToList = () => {
         </div>
 
         <!-- Already subscribe -->
-        <div
-          v-else
-          :class="
-            'home__item_left_effect item_already_subscribed ' +
-            (isNowSubscribed ? 'opacity-100' : 'opacity-0') +
-            ' lg:pr-16'
-          "
-        >
-          <p
-            class="relative mb-5 inline-block font-syne text-base text-red-brown sm:text-lg lg:text-xl"
+        <div v-else class="home__item_left_effect mt-6 opacity-0 lg:pr-16">
+          <div
+            class="relative mb-5 inline-block font-syne text-base text-red-brown sm:text-lg lg:text-lg"
           >
-            <span class="font-medium text-gold"
-              >Vous êtes déjà inscrit à la liste de contact</span
-            >, vous pouvez rejoindre le discord dès maintenant pour être informé
-            des dernières nouveautés !
+            <p>
+              <span class="font-medium text-gold"
+                >Vous êtes déjà inscrit à la liste de contact</span
+              >, vous pouvez rejoindre le discord dès maintenant pour être
+              informé des dernières nouveautés !
+            </p>
+            <Objective />
             <a
               class="mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-discord py-3 text-center font-medium text-white transition-colors hover:bg-dark-discord lg:w-2/4"
               href="https://discord.gg/MfqAvuca5W"
@@ -425,7 +446,44 @@ const addContactToList = () => {
               width="14"
               class="home__stars absolute -left-8 top-0"
             />
-          </p>
+          </div>
+        </div>
+
+        <!-- Socials media -->
+        <div class="mt-3 flex flex-row justify-center gap-6 lg:justify-start">
+          <a
+            href="/"
+            target="_blank"
+            class="home__socials bg-custom-blue-50 group flex h-12 w-12 items-center justify-center rounded-full opacity-0 transition-colors hover:bg-custom-blue-100"
+          >
+            <Icon
+              name="mdi:twitter"
+              size="18"
+              class="group-hover:text-custom-blue-50 text-custom-blue-100 transition-colors"
+            />
+          </a>
+          <a
+            href="/"
+            target="_blank"
+            class="home__socials bg-custom-blue-50 group flex h-12 w-12 items-center justify-center rounded-full opacity-0 transition-colors hover:bg-custom-blue-100"
+          >
+            <Icon
+              name="ri:instagram-fill"
+              size="18"
+              class="group-hover:text-custom-blue-50 text-custom-blue-100 transition-colors"
+            />
+          </a>
+          <a
+            href="/"
+            target="_blank"
+            class="home__socials bg-custom-blue-50 group flex h-12 w-12 items-center justify-center rounded-full opacity-0 transition-colors hover:bg-custom-blue-100"
+          >
+            <Icon
+              name="fa-brands:tiktok"
+              size="18"
+              class="group-hover:text-custom-blue-50 text-custom-blue-100 transition-colors"
+            />
+          </a>
         </div>
       </div>
 
@@ -443,6 +501,11 @@ const addContactToList = () => {
             disableOnInteraction: true,
             pauseOnMouseEnter: true,
           }"
+          :keyboard="{
+            enabled: true,
+          }"
+          :mousewheel="true"
+          :initial-slide="1"
         >
           <SwiperSlide
             v-for="(institute, index) in institutes"

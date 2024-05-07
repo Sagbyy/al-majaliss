@@ -25,7 +25,7 @@ const tailwindConfig = {
           100: '#C05325',
           150: '#934220',
         },
-        'custom-blue': { 100: '#009498', 150: '#006164' },
+        'custom-blue': { 50: '#CCEAEA', 100: '#009498', 150: '#006164' },
         gold: '#B9842D',
         'red-brown': '#564646',
         discord: '#7289DA',
@@ -36,7 +36,7 @@ const tailwindConfig = {
         syne: ['Syne', 'sans-serif'],
         'dm-serif': ['DM Serif Text', 'serif'],
       },
-      dropShadow: {
+      boxShadow: {
         'landing-card': '0 10px 40px 0 rgba(195, 195, 195, 0.25)',
       },
     },
