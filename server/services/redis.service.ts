@@ -7,7 +7,7 @@ export class RedisService {
     private _pollerTimeout: NodeJS.Timeout = setTimeout((() => {}), 5000);
     private _isRefreshPollerTime: boolean = false;
 
-    public emailCounter: Ref<number> = ref(134);
+    public emailCounter: Ref<number> = ref(0);
 
     /**
      * Singleton implementation
