@@ -18,7 +18,7 @@ const institutes = [
   },
   {
     name: 'Institut Addani',
-    address: 'Villeneuve St George, Île-de-France',
+    address: 'Villeneuve-Saint-Georges, Île-de-France',
     image: '/images/landing/schools/addani.jpg',
     type: 'Cours payants',
     courses: {
