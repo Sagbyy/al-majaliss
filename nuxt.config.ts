@@ -35,6 +35,19 @@ export default defineNuxtConfig({
           content:
             "Notre mission est de faciliter l'accès aux sciences religieuses en référençant tous les instituts de France dans un seul et même endroit afin que tu puisses les comparer entre eux et choisir celui qui te correspond vraiment !",
         },
+        {
+          name: "application-name",
+          content: "Majaliss"
+        },
+        {
+          name: "apple-mobile-web-app-title",
+          content: "Majaliss"
+        },
+        {
+          name: "author",
+          content: "Majaliss"
+        },
+        
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/majaliss_logo.svg' },

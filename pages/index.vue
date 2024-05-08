@@ -9,11 +9,7 @@ import Objective from '~/components/ui/Objective.vue'
 import { SwiperSlide, Swiper } from 'swiper/vue'
 
 import gsap from 'gsap'
-import {
-  Autoplay,
-  Keyboard,
-  Mousewheel,
-} from 'swiper/modules'
+import { Autoplay, Keyboard, Mousewheel } from 'swiper/modules'
 
 const modules = [Autoplay, Keyboard, Mousewheel]
 
@@ -195,8 +191,8 @@ const addContactToList = () => {
         // Set the user as subscribed
         localStorage.setItem('subscribed', 'true')
         alreadySubscribe.value = true
-        
-        await redisService.incrementEmailCounter();
+
+        await redisService.incrementEmailCounter()
 
         toast.add({
           title: 'Succès',
@@ -256,7 +252,7 @@ const addContactToList = () => {
 
       <p class="font-syne">
         Félicitation, vous êtes désormais inscrit à notre liste de contact !
-        Rejoignez le discord pour être informé des dernières nouveautés.
+        Rejoignez le Discord pour être informé des dernières nouveautés.
       </p>
       <a
         class="mt-5 flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-discord py-3 text-center font-medium text-white transition-colors hover:bg-dark-discord"
@@ -264,7 +260,7 @@ const addContactToList = () => {
         target="_blank"
       >
         <Icon name="ic:baseline-discord" color="white" size="20" />
-        <p>Rejoindre le discord</p>
+        <p>Rejoindre le Discord</p>
       </a>
     </UCard>
   </UModal>
@@ -276,12 +272,12 @@ const addContactToList = () => {
     "
   >
     <p
-      class="home__first_arab_text absolute -top-16 left-12 z-10 -translate-x-[200%] font-samir text-[300px] text-beige-100"
+      class="home__first_arab_text absolute -top-16 left-12 z-10 -translate-x-[200%] select-none font-samir text-[300px] text-beige-100"
     >
       مجالس
     </p>
     <p
-      class="home__second_arab_text absolute -bottom-36 right-5 z-10 translate-x-[200%] overflow-hidden font-samir text-[300px] text-beige-100"
+      class="home__second_arab_text absolute -bottom-36 right-5 z-10 translate-x-[200%] select-none overflow-hidden font-samir text-[300px] text-beige-100"
     >
       مجالس
     </p>
@@ -358,7 +354,7 @@ const addContactToList = () => {
             <p
               class="home__item_left_effect relative inline-block font-syne text-base font-semibold text-gold opacity-0 sm:text-sm lg:text-base"
             >
-              Si tu veux que ce projet voit le jour, laisse nous ton mail
+              Si tu veux que ce projet voit le jour, laisse nous ton mail !
               <NuxtImg
                 src="/images/landing/star.svg"
                 alt="Etoile"
@@ -430,7 +426,7 @@ const addContactToList = () => {
             <p>
               <span class="font-medium text-gold"
                 >Vous êtes déjà inscrit à la liste de contact</span
-              >, vous pouvez rejoindre le discord dès maintenant pour être
+              >, vous pouvez rejoindre le Discord dès maintenant pour être
               informé des dernières nouveautés !
             </p>
             <Objective :objective-value="redisService.emailCounter" />
@@ -440,7 +436,7 @@ const addContactToList = () => {
               target="_blank"
             >
               <Icon name="ic:baseline-discord" color="white" size="20" />
-              <p class="text-base font-light">Rejoindre le discord</p>
+              <p class="text-base font-light">Rejoindre le Discord</p>
             </a>
             <NuxtImg
               src="/images/landing/star.svg"
