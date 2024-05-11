@@ -509,7 +509,7 @@ const addContactToList = () => {
             </a>
           </div>
           <div
-            class="home__mawaqit flex flex-row items-center justify-center gap-3"
+            class="home__mawaqit opacity-0 flex flex-row items-center justify-center gap-3"
           >
             <p class="font-figtree text-xs uppercase text-neutral-500">
               Powered by
