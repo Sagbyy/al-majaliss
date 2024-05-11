@@ -123,6 +123,20 @@ onMounted(() => {
         },
         '<+=0.5'
       )
+      .fromTo(
+        '.home__mawaqit',
+        {
+          opacity: 0,
+          y: -15,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out',
+        },
+        '<'
+      )
   })
 })
 
@@ -317,8 +331,8 @@ const addContactToList = () => {
             <h1
               class="home__item_left_effect my-7 font-dm-serif text-3xl text-custom-blue-100 opacity-0 sm:text-2xl lg:text-3xl"
             >
-              Bienvenue sur Majaliss, la plateforme de référence pour apprendre
-              sa religion
+              Bienvenue sur Majaliss, la plateforme de référence dans la
+              recherche de sciences religieuses.
             </h1>
             <NuxtImg
               src="/images/landing/star.svg"
@@ -456,40 +470,57 @@ const addContactToList = () => {
         </div>
 
         <!-- Socials media -->
-        <div class="mt-3 flex flex-row justify-center gap-6 lg:justify-start">
-          <a
-            href="/"
-            target="_blank"
-            class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
+        <div
+          class="mt-4 flex flex-col justify-between gap-8 lg:flex-row lg:gap-2 lg:pr-16"
+        >
+          <div class="flex flex-row justify-center gap-6 lg:justify-start">
+            <a
+              href="https://twitter.com/majaliss_io"
+              target="_blank"
+              class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
+            >
+              <Icon
+                name="mdi:twitter"
+                size="18"
+                class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/majaliss_io/"
+              target="_blank"
+              class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
+            >
+              <Icon
+                name="ri:instagram-fill"
+                size="18"
+                class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
+              />
+            </a>
+            <a
+              href="https://www.tiktok.com/@majaliss_app?lang=fr"
+              target="_blank"
+              class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
+            >
+              <Icon
+                name="fa-brands:tiktok"
+                size="18"
+                class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
+              />
+            </a>
+          </div>
+          <div
+            class="home__mawaqit flex flex-row items-center justify-center gap-3"
           >
-            <Icon
-              name="mdi:twitter"
-              size="18"
-              class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
+            <p class="font-figtree text-xs uppercase text-neutral-500">
+              Powered by
+            </p>
+            <NuxtImg
+              src="/images/landing/mawaqit_logo_light.png"
+              alt="Etoile"
+              height="40"
+              width="100"
             />
-          </a>
-          <a
-            href="/"
-            target="_blank"
-            class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
-          >
-            <Icon
-              name="ri:instagram-fill"
-              size="18"
-              class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
-            />
-          </a>
-          <a
-            href="/"
-            target="_blank"
-            class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
-          >
-            <Icon
-              name="fa-brands:tiktok"
-              size="18"
-              class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
-            />
-          </a>
+          </div>
         </div>
       </div>
 

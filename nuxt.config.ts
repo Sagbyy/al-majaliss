@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   // Meta
   app: {
     head: {
-      title: 'Majaliss - Trouvez un institut près de chez vous',
+      title: 'Majaliss - Trouvez l\'institut qu\'il vous faut',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -67,6 +67,7 @@ export default defineNuxtConfig({
     families: {
       Syne: [400, 500, 600, 700],
       'DM Serif Text': true,
+      Figtree: [600]
     },
   },
 
