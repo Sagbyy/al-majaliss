@@ -281,7 +281,7 @@ const addContactToList = () => {
 
   <div
     :class="
-      'relative h-auto overflow-hidden p-4 pb-16 lg:h-screen lg:max-h-screen ' +
+      'relative h-auto overflow-hidden !bg-white p-4 pb-16 lg:h-screen lg:max-h-screen ' +
       (screenZoom ? 'lg:p-10' : 'lg:px-20 lg:py-8')
     "
   >
@@ -509,7 +509,7 @@ const addContactToList = () => {
             </a>
           </div>
           <div
-            class="home__mawaqit opacity-0 flex flex-row items-center justify-center gap-3"
+            class="home__mawaqit flex flex-row items-center justify-center gap-3 opacity-0"
           >
             <p class="font-figtree text-xs uppercase text-neutral-500">
               Powered by
