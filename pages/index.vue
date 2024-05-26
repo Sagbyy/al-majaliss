@@ -400,7 +400,7 @@ const addContactToList = () => {
               class="hidden h-full w-2/6 rounded-xl bg-gold text-center font-syne text-base text-white transition-colors hover:bg-yellow-700 sm:block"
               @click="addContactToList"
             >
-              Être alerté
+              Je soutiens
             </button>
             <NuxtImg
               src="/images/landing/star.svg"
@@ -428,7 +428,7 @@ const addContactToList = () => {
             class="home__item_left_effect relative z-20 block h-14 w-full rounded-xl bg-gold text-center font-syne text-base text-white opacity-0 transition-colors hover:bg-yellow-700 sm:hidden"
             @click="addContactToList"
           >
-            Être alerté
+            Je soutiens
           </button>
         </div>
 
