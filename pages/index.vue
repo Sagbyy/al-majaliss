@@ -31,6 +31,10 @@ const emailInputValue = ref('')
 
 const alreadySubscribe = ref(false)
 
+const alreadySubscribeElement = ref(null)
+
+const objectiveTextElement = ref(null)
+
 // Hooks cycle
 onMounted(() => {
   // Check if the user is already subscribed
@@ -92,7 +96,13 @@ onMounted(() => {
           opacity: 0,
           y: -5,
         },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power2.out' },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: 'power2.out',
+        },
         '<+=0.8'
       )
       .fromTo(
@@ -177,6 +187,18 @@ const addContactToList = () => {
   fetch('https://api.brevo.com/v3/contacts', options)
     .then((response) => response.json())
     .then(async (response) => {
+      watchEffect(() => {
+        // Set the opacity of the already subscribe element
+        if (alreadySubscribe.value) {
+          gsap.to(alreadySubscribeElement.value, {
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.out',
+          })
+        }
+        console.log('alreadySubscribeElement', alreadySubscribeElement.value)
+      })
+
       if (response.code) {
         switch (response.code) {
           case 'duplicate_parameter':
@@ -308,9 +330,9 @@ const addContactToList = () => {
         <div>
           <div class="flex flex-row items-center gap-8">
             <NuxtImg
-              src="/majaliss_logo.svg"
+              src="/majaliss_logo.png"
               alt="Logo Majaliss"
-              height="80"
+              height="80px"
               class="home__item_left_effect h-20 opacity-0"
             />
             <div class="relative">
@@ -384,7 +406,10 @@ const addContactToList = () => {
                 class="home__stars absolute -left-8 top-0 scale-0"
               />
             </p>
-            <Objective :objective-value="redisService.emailCounter" />
+            <Objective
+              :objective-value="redisService.emailCounter"
+              :objective-text-element="objectiveTextElement"
+            />
           </div>
           <div
             class="home__item_left_effect relative mb-2 flex h-14 flex-col rounded-xl border-[1px] border-slate-200 bg-white px-3 py-3 font-syne opacity-0 sm:mb-0 sm:h-16 sm:flex-row sm:rounded-xl sm:px-6"
@@ -433,7 +458,11 @@ const addContactToList = () => {
         </div>
 
         <!-- Already subscribe -->
-        <div v-else class="home__item_left_effect mt-6 opacity-0 lg:pr-16">
+        <div
+          v-else
+          class="home__item_left_effect mt-6 opacity-0 lg:pr-16"
+          ref="alreadySubscribeElement"
+        >
           <div
             class="relative mb-5 inline-block font-syne text-base text-red-brown sm:text-lg lg:text-lg"
           >
@@ -480,7 +509,7 @@ const addContactToList = () => {
               class="home__socials group flex h-12 w-12 items-center justify-center rounded-full bg-custom-blue-50 opacity-0 transition-colors hover:bg-custom-blue-100"
             >
               <Icon
-                name="mdi:twitter"
+                name="pajamas:twitter"
                 size="18"
                 class="text-custom-blue-100 transition-colors group-hover:text-custom-blue-50"
               />

@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   // Meta
   app: {
     head: {
-      title: 'Majaliss - Trouvez l\'institut qu\'il vous faut',
+      title: "Majaliss - Trouvez l'institut qu'il vous faut",
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -36,21 +36,20 @@ export default defineNuxtConfig({
             "Notre mission est de faciliter l'accès aux sciences religieuses en référençant tous les instituts de France dans un seul et même endroit afin que tu puisses les comparer entre eux et choisir celui qui te correspond vraiment !",
         },
         {
-          name: "application-name",
-          content: "Majaliss"
+          name: 'application-name',
+          content: 'Majaliss',
         },
         {
-          name: "apple-mobile-web-app-title",
-          content: "Majaliss"
+          name: 'apple-mobile-web-app-title',
+          content: 'Majaliss',
         },
         {
-          name: "author",
-          content: "Majaliss"
+          name: 'author',
+          content: 'Majaliss',
         },
-        
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/majaliss_logo.svg' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/majaliss_icon.svg' },
       ],
     },
   },
@@ -67,7 +66,7 @@ export default defineNuxtConfig({
     families: {
       Syne: [400, 500, 600, 700],
       'DM Serif Text': true,
-      Figtree: [600]
+      Figtree: [600],
     },
   },
 
@@ -86,7 +85,7 @@ export default defineNuxtConfig({
         username: process.env.REDIS_USER_NAME,
         password: process.env.REDIS_USER_PASSWORD,
         db: 0,
-      }
-    }
-  }
+      },
+    },
+  },
 })
