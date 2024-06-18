@@ -13,6 +13,6 @@ defineProps<{
     <span class="mx-1 inline-block text-3xl text-gold">{{
       objectiveValue
     }}</span>
-    inscrits. Objectif <span class="underline">2000</span> !
+    inscrits !
   </p>
 </template>
